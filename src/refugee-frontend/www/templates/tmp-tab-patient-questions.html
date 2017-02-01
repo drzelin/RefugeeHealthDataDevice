@@ -1,0 +1,139 @@
+<ion-side-menus>
+    <!-- Center content -->
+    <ion-side-menu-content>
+        <header class="bar bar-header bar-stable">
+            <h1 class="title">{{ selected }}</h1>
+        </header>
+        <ion-content>
+            <div class="list has-header">
+                <div class="item" ng-repeat="question in questions">
+                    <span class="custom-text">
+                        {{ question.body }}
+                    </span>
+                    <span class="item-input-inset" ng-click="onClick()" ng-show="responseType('scale')">
+                        <button id="1"
+                                ng-class="{'button-outline':tog!=1}"
+                                class="button button-small
+                                button-balanced
+                                select-button"
+                                ng-click="tog=1;questionAnswered(tog,[question.body])">
+                            <i>Not At All</i>
+                        </button>
+                        <button id="2"
+                                ng-class="{'button-outline':tog!=2}"
+                                class="button button-small
+                                button-calm select-button"
+                                ng-click="tog=2;questionAnswered(tog,[question.body])">
+                            <i>A little</i>
+                        </button>
+
+                        <button id="3"
+                                ng-class="{'button-outline':tog!=3}"
+                                class="button button-small
+                                button-positive
+                                select-button"
+                                ng-click="tog=3;questionAnswered(tog,[question.body])">
+                            <i>Quite a bit</i>
+                        </button>
+                        <button id="4"
+                                ng-class="{'button-outline':tog!=4}"
+                                class="button button-small
+                                button-assertive
+                                select-button"
+                                ng-click="tog=4;questionAnswered(tog,[question.body])">
+                            <i>Extremely</i>
+                        </button>
+                    </span>
+                    <span class="item-input-inset" ng-click="onClick()" ng-show="responseType('bool')">
+                        <button id="5"
+                                ng-class="{'button-outline':tog!=5}"
+                                class="button button-small
+                                button-balanced
+                                select-button"
+                                ng-click="tog=5;questionAnswered(tog,[question.body])">
+                            <i class="icon ion-checkmark-round"></i>
+                        </button>
+                        <button id="6"
+                                ng-class="{'button-outline':tog!=6}"
+                                class="button button-small
+                                button-dark select-button"
+                                ng-click="tog=6;questionAnswered(tog,[question.body])">
+                            <i class="icon ion-minus-round"></i>
+                        </button>
+                        <button id="7"
+                                ng-class="{'button-outline':tog!=7}"
+                                class="button button-small
+                                button-assertive
+                                select-button"
+                                ng-click="tog=7;questionAnswered(tog,[question.body])">
+                            <i class="icon ion-close-round"></i>
+                        </button>
+                    </span>
+                    <span class="item-input-inset" ng-click="onClick()" ng-show="responseType('paragraph')">
+                        <label class="item item-input item-floating-label">
+                            <span class="input-label">Response</span>
+                            <input type="text" placeholder="Response">
+                        </label>
+                    </span>
+                    </br>
+                    <div class="item item-divider" ng-repeat="dropdown in question.dropdown" ng-show="showDropdown(tog)">
+                        <span class="custom-text">
+                            {{ dropdown.body }}
+                        </span>
+                        <span class="item-input-inset" ng-click="onClick()" ng-show="[dropdown.id]=='time'">
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label">Date</span>
+                                <input type="text" placeholder="Date">
+                            </label>
+                        </span>
+                        <span class="item-input-inset" ng-click="onClick()" ng-show="[dropdown.id] == 'bool'">
+                            <button id="8"
+                                    ng-class="{'button-outline':tog!=8}"
+                                    class="button button-small
+                                    button-balanced
+                                    select-button"
+                                    ng-click="tog=8;questionAnswered(tog,[question.body])">
+                                <i class="icon ion-checkmark-round"></i>
+                            </button>
+                            <button id="9"
+                                    ng-class="{'button-outline':tog!=9}"
+                                    class="button button-small
+                                    button-dark select-button"
+                                    ng-click="tog=9;questionAnswered(tog,[question.body])">
+                                <i class="icon ion-minus-round"></i>
+                            </button>
+                            <button id="10"
+                                    ng-class="{'button-outline':tog!=10}"
+                                    class="button button-small
+                                    button-assertive
+                                    select-button"
+                                    ng-click="tog=10;questionAnswered(tog,[question.body])">
+                                <i class="icon ion-close-round"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                </br>
+                <button ng-click="submit()" class="button button-full button-positive">
+                    Submit
+                </button>
+            </div>
+        </ion-content>
+    </ion-side-menu-content>
+
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+        <header class="bar bar-header bar-stable">
+            <h1 class="title">Categories</h1>
+        </header>
+        <ion-content class="has-header">
+            <ion-list>
+                <ion-item menu-close ng-repeat="category in categories"
+                                     ng-click="update(category)">
+                    {{ category }}
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+
+</ion-side-menus>

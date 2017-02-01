@@ -18,6 +18,7 @@ angular.module('PatientQuestionsModule')
         $scope.selected = category;
         $scope.questions = questions[category];
         $scope.questionType = questions[category][0]["body"];
+        $scope.dropdown = questions[category][0]["dropdown"];
     }
 
     $scope.submit = function() {
@@ -52,6 +53,14 @@ angular.module('PatientQuestionsModule')
             return false; 
         }
 
+    }
+
+    $scope.showDropdown = function(value) {
+        if ((value == 5 || value >=8) && $scope.dropdown == "yes") {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 })

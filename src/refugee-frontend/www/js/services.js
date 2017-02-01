@@ -17,6 +17,7 @@ angular.module('starter.services', [])
                                 var questionData = {};
                                 questionData.categories = Object.keys(response.data);
                                 questionData.questions = response.data;
+                                questionData.value = 6;
                                 return questionData;
                         }, function failure(response) {
                                 console.log("did not get data");
@@ -35,6 +36,7 @@ angular.module('starter.services', [])
                                 var questionData = {};
                                 questionData.categories = Object.keys(response.data);
                                 questionData.questions = response.data;
+                                questionData.value = 6;
                                 return questionData;
                         }, function failure(response) {
                                 console.log("did not get data");
