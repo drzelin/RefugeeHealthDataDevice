@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 .controller('VisitConfirmationCtrl', function($scope, $state) {
 
     $scope.submit = function() {
-        $state.transitionTo('tab.overview');
+        $state.transitionTo('tab.disclaimer');
     }
 
 });
