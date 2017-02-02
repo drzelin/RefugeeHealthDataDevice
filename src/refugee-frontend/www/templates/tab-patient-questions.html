@@ -1,71 +1,71 @@
 <ion-side-menus>
     <!-- Center content -->
     <ion-side-menu-content>
-        <header class="bar bar-header bar-stable">
+        <header class="bar bar-header bar-dark">
             <h1 class="title">{{ selected }}</h1>
         </header>
-        <ion-content>
+        <ion-content class="has-header">
             <ion-list>
                 <div ng-repeat="question in questions">
-                    <ion-item class="item-stable">
+                    <ion-item class="item-stable" ng-show="!responseType(question.body)">
                         &nbsp;
                         {{ question.body }}
                         <span class="item-input-inset" ng-click="onClick()" ng-show="responseType('scale')">
                             <button id="1"
-                                    ng-class="{'button-outline':question.value!='not at all'}"
+                                    ng-class="{'button-outline':question.value!=1}"
                                     class="button button-small
                                     button-balanced
                                     select-button"
-                                    ng-click="question.value='not at all';questionAnswered(question.value,question.body)">
+                                    ng-click="question.value=1;questionAnswered(question.value,question.body)">
                                 <i>Not At All</i>
                             </button>
                             <button id="2"
-                                    ng-class="{'button-outline':question.value!='a little'}"
+                                    ng-class="{'button-outline':question.value!=2}"
                                     class="button button-small
                                     button-calm select-button"
-                                    ng-click="question.value='a little';questionAnswered(question.value,question.body)">
+                                    ng-click="question.value=2;questionAnswered(question.value,question.body)">
                                 <i>A little</i>
                             </button>
 
                             <button id="3"
-                                    ng-class="{'button-outline':question.value!='quite a bit'}"
+                                    ng-class="{'button-outline':question.value!=3}"
                                     class="button button-small
                                     button-positive
                                     select-button"
-                                    ng-click="question.value='quite a bit';questionAnswered(question.value,question.body)">
+                                    ng-click="question.value=3;questionAnswered(question.value,question.body)">
                                 <i>Quite a bit</i>
                             </button>
                             <button id="4"
-                                    ng-class="{'button-outline':question.value!='extremely'}"
+                                    ng-class="{'button-outline':question.value!=4}"
                                     class="button button-small
                                     button-assertive
                                     select-button"
-                                    ng-click="question.value='extremely';questionAnswered(question.value,question.body)">
+                                    ng-click="question.value=4;questionAnswered(question.value,question.body)">
                                 <i>Extremely</i>
                             </button>
                         </span>
                         <span class="item-input-inset" ng-click="onClick()" ng-show="responseType('bool')">
                             <button id="5"
-                                    ng-class="{'button-outline':question.value!='yes'}"
+                                    ng-class="{'button-outline':question.value!=5}"
                                     class="button button-small
                                     button-balanced
                                     select-button"
-                                    ng-click="question.value='yes';questionAnswered(question.value,question.body)">
+                                    ng-click="question.value=5;questionAnswered(question.value,question.body)">
                                 <i class="icon ion-checkmark-round"></i>
                             </button>
                             <button id="6"
-                                    ng-class="{'button-outline':question.value!='neutral'}"
+                                    ng-class="{'button-outline':question.value!=6}"
                                     class="button button-small
                                     button-dark select-button"
-                                    ng-click="question.value='neutral';questionAnswered(question.value,question.body)">
+                                    ng-click="question.value=6;questionAnswered(question.value,question.body)">
                                 <i class="icon ion-minus-round"></i>
                             </button>
                             <button id="7"
-                                    ng-class="{'button-outline':question.value!='no'}"
+                                    ng-class="{'button-outline':question.value!=7}"
                                     class="button button-small
                                     button-assertive
                                     select-button"
-                                    ng-click="question.value='no';questionAnswered(question.value,question.body)">
+                                    ng-click="question.value=7;questionAnswered(question.value,question.body)">
                                 <i class="icon ion-close-round"></i>
                             </button>
                         </span>
@@ -134,7 +134,7 @@
 
     <!-- Left menu -->
     <ion-side-menu side="left">
-        <header class="bar bar-header bar-stable">
+        <header class="bar bar-header bar-positive">
             <h1 class="title">Categories</h1>
         </header>
         <ion-content class="has-header">

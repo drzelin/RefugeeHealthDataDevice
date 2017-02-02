@@ -26,16 +26,16 @@ angular.module('PatientQuestionsModule')
         for (var key in $scope.responses) {
             if ($scope.responses.hasOwnProperty(key)) {
                 if ($scope.selected == "trauma_symptoms_DSM-IV") {
-                    traumaSymptomsDSMIVScore = traumaSymptomsDSMIVScore + 1;
+                    traumaSymptomsDSMIVScore = traumaSymptomsDSMIVScore + $scope.responses[key].body;
                 }
                 if ($scope.selected == "trauma_symptoms_general"){
-                    traumaSymptomsTotalScore = traumaSymptomsTotalScore + 1;
+                    traumaSymptomsTotalScore = traumaSymptomsTotalScore + $scope.responses[key].body;
                 }
                 if ($scope.selected == "hopkins_symptom_checklist_part1") {
-                    anxietyScore = anxietyScore + 1;
+                    anxietyScore = anxietyScore + $scope.responses[key].body;
                 }
                 if ($scope.selected == "hopkins_symptom_checklist_part2") {
-                    depressionScore = depressionScore + 1;
+                    depressionScore = depressionScore + $scope.responses[key].body;
                 }
             }
         }
@@ -70,7 +70,7 @@ angular.module('PatientQuestionsModule')
     }
 
     $scope.showDropdown = function(value) {
-        if (value == 'yes' && $scope.dropdown == "yes") {
+        if (value == 5 && $scope.dropdown == "yes") {
             return true;
         } else {
             return false;
