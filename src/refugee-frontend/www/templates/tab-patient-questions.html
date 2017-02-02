@@ -12,60 +12,60 @@
                         {{ question.body }}
                         <span class="item-input-inset" ng-click="onClick()" ng-show="responseType('scale')">
                             <button id="1"
-                                    ng-class="{'button-outline':question.value!=1}"
+                                    ng-class="{'button-outline':question.value!='not at all'}"
                                     class="button button-small
                                     button-balanced
                                     select-button"
-                                    ng-click="question.value=1;questionAnswered(question.value,[question.body])">
+                                    ng-click="question.value='not at all';questionAnswered(question.value,question.body)">
                                 <i>Not At All</i>
                             </button>
                             <button id="2"
-                                    ng-class="{'button-outline':question.value!=2}"
+                                    ng-class="{'button-outline':question.value!='a little'}"
                                     class="button button-small
                                     button-calm select-button"
-                                    ng-click="question.value=2;questionAnswered(question.value,[question.body])">
+                                    ng-click="question.value='a little';questionAnswered(question.value,question.body)">
                                 <i>A little</i>
                             </button>
 
                             <button id="3"
-                                    ng-class="{'button-outline':question.value!=3}"
+                                    ng-class="{'button-outline':question.value!='quite a bit'}"
                                     class="button button-small
                                     button-positive
                                     select-button"
-                                    ng-click="question.value=3;questionAnswered(question.value,[question.body])">
+                                    ng-click="question.value='quite a bit';questionAnswered(question.value,question.body)">
                                 <i>Quite a bit</i>
                             </button>
                             <button id="4"
-                                    ng-class="{'button-outline':question.value!=4}"
+                                    ng-class="{'button-outline':question.value!='extremely'}"
                                     class="button button-small
                                     button-assertive
                                     select-button"
-                                    ng-click="question.value=4;questionAnswered(question.value,[question.body])">
+                                    ng-click="question.value='extremely';questionAnswered(question.value,question.body)">
                                 <i>Extremely</i>
                             </button>
                         </span>
                         <span class="item-input-inset" ng-click="onClick()" ng-show="responseType('bool')">
                             <button id="5"
-                                    ng-class="{'button-outline':question.value!=5}"
+                                    ng-class="{'button-outline':question.value!='yes'}"
                                     class="button button-small
                                     button-balanced
                                     select-button"
-                                    ng-click="question.value=5;questionAnswered(question.value,[question.body])">
+                                    ng-click="question.value='yes';questionAnswered(question.value,question.body)">
                                 <i class="icon ion-checkmark-round"></i>
                             </button>
                             <button id="6"
-                                    ng-class="{'button-outline':question.value!=6}"
+                                    ng-class="{'button-outline':question.value!='neutral'}"
                                     class="button button-small
                                     button-dark select-button"
-                                    ng-click="question.value=6;questionAnswered(question.value,[question.body])">
+                                    ng-click="question.value='neutral';questionAnswered(question.value,question.body)">
                                 <i class="icon ion-minus-round"></i>
                             </button>
                             <button id="7"
-                                    ng-class="{'button-outline':question.value!=7}"
+                                    ng-class="{'button-outline':question.value!='no'}"
                                     class="button button-small
                                     button-assertive
                                     select-button"
-                                    ng-click="question.value=7;questionAnswered(question.value,[question.body])">
+                                    ng-click="question.value='no';questionAnswered(question.value,question.body)">
                                 <i class="icon ion-close-round"></i>
                             </button>
                         </span>
@@ -83,33 +83,43 @@
                         {{ dropdown.body }}
                         <span class="item-input-inset" ng-click="onClick()" ng-show="'bool' == dropdown.question_type">
                             <button id="8"
-                                    ng-class="{'button-outline':dropdown.value!=8}"
+                                    ng-class="{'button-outline':dropdown.value!='yes'}"
                                     class="button button-small
                                     button-balanced
                                     select-button"
-                                    ng-click="dropdown.value=8;questionAnswered(question.value,[question.body])">
+                                    ng-click="dropdown.value='yes';questionAnswered(dropdown.value, question.body, dropdown.body)">
                                 <i class="icon ion-checkmark-round"></i>
                             </button>
                             <button id="9"
-                                    ng-class="{'button-outline':dropdown.value!=9}"
+                                    ng-class="{'button-outline':dropdown.value!='neutral'}"
                                     class="button button-small
                                     button-dark select-button"
-                                    ng-click="dropdown.value=9;questionAnswered(question.value,[question.body])">
+                                    ng-click="dropdown.value='neutral';questionAnswered(dropdown.value, question.body, dropdown.body)">
                                 <i class="icon ion-minus-round"></i>
                             </button>
-                            <button id="7"
-                                    ng-class="{'button-outline':dropdown.value!=10}"
+                            <button id="10"
+                                    ng-class="{'button-outline':dropdown.value!='no'}"
                                     class="button button-small
                                     button-assertive
                                     select-button"
-                                    ng-click="dropdown.value=10;questionAnswered(question.value,[question.body])">
+                                    ng-click="dropdown.value='no';questionAnswered(dropdown.value, question.body, dropdown.body)">
                                 <i class="icon ion-close-round"></i>
                             </button>
                         </span>
                         <span class="item-input-inset" ng-click="onClick()" ng-show="'time' == dropdown.question_type">
-                            <label class="item item-input item-floating-label">
-                                <span class="input-label">Date</span>
-                                <input type="text" placeholder="Date">
+                            <label class="item item-input">
+                                <span class="input-label">Hours</span>
+                                <input type="number">
+                            </label>
+                            <label class="item item-input">
+                                <span class="input-label">Minutes</span>
+                                <input type="number">
+                            </label>
+                        </span>
+                        <span class="item-input-inset" ng-click="onClick()" ng-show="'num' == dropdown.question_type">
+                            <label class="item item-input">
+                                <span class="input-label">Number</span>
+                                <input type="number">
                             </label>
                         </span>
                     </ion-item>
