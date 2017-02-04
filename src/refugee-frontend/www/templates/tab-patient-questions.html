@@ -5,8 +5,9 @@
             <h1 class="title">{{ selected }}</h1>
         </header>
         <ion-content class="has-header">
+            <form ng-model="form">
             <ion-list>
-                <div ng-repeat="question in questions">
+                <div ng-repeat="question in questions track by $index">
                     <ion-item class="item-stable" ng-show="!responseType(question.body)">
                         &nbsp;
                         {{ question.body }}
@@ -72,13 +73,13 @@
                         <span class="item-input-inset" ng-click="onClick()" ng-show="responseType('paragraph')">
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Response</span>
-                                <input type="text" placeholder="Response">
+                                <input type="text" placeholder="Response" name="input" ng-model ="form.paragraphText[$index]"\>
                             </label>
                         </span>
                         &nbsp;
                     </ion-item>
                     <ion-item class="item-accordion"
-                              ng-repeat="dropdown in question.dropdown"
+                              ng-repeat="dropdown in question.dropdown track by $index"
                               ng-show="showDropdown(question.value)">
                         {{ dropdown.body }}
                         <span class="item-input-inset" ng-click="onClick()" ng-show="'bool' == dropdown.question_type">
@@ -109,17 +110,17 @@
                         <span class="item-input-inset" ng-click="onClick()" ng-show="'time' == dropdown.question_type">
                             <label class="item item-input">
                                 <span class="input-label">Hours</span>
-                                <input type="number">
+                                <input type="number" name="input" ng-model ="form.hours[$index]"\>
                             </label>
                             <label class="item item-input">
                                 <span class="input-label">Minutes</span>
-                                <input type="number">
+                                <input type="number" name="input" ng-model ="form.minutes[$index]"\s>
                             </label>
                         </span>
                         <span class="item-input-inset" ng-click="onClick()" ng-show="'num' == dropdown.question_type">
                             <label class="item item-input">
                                 <span class="input-label">Number</span>
-                                <input type="number">
+                                <input type="number" name="input" ng-model ="form.number[$index]">
                             </label>
                         </span>
                     </ion-item>
@@ -133,10 +134,11 @@
                     </label>
                 </span>
             </ion-item>
-            <button ng-click="submit()" class="button button-full button-positive">
+            <button type="submit" class="button button-full button-positive" ng-click="submit(form)">
                 Submit
             </button>
             </div>
+            </form>
         </ion-content>
     </ion-side-menu-content>
 
