@@ -17,3 +17,7 @@
         max-width: 60%;
         float: left;
 }
+
+.report-score {
+        float: right;
+}
