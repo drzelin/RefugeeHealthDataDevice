@@ -39,18 +39,20 @@ angular.module('PatientQuestionsModule')
                 }
             }
         }
+        // TODO: remove this
+        var total = ((depressionScore + anxietyScore)/25);
         alert("Trauma Symptoms DSM-IV Score = " + (traumaSymptomsDSMIVScore/16))
         alert("Trauma Symptoms Total Score = " + ((traumaSymptomsDSMIVScore + traumaSymptomsTotalScore)/40))
         alert("Anxiety Score = " + (anxietyScore/10))
         alert("Depression Score = " + (depressionScore/15))
         alert("Total Score = " + ((depressionScore + anxietyScore)/25))
-        $state.transitionTo('visit-confirmation');
+        $state.transitionTo('visit-confirmation', {"score":total});
     }
 
     $scope.questionAnswered = function(response, questionBody, dropdownBody) {
-        console.log(response);
-        console.log(questionBody);
-        console.log(dropdownBody);
+        //console.log(response);
+        //console.log(questionBody);
+        //console.log(dropdownBody);
         if (dropdownBody) {
             console.log(dropdownBody);
             $scope.responses[questionBody]['dropdown'] = {};

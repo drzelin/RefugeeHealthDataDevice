@@ -31,9 +31,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
         $stateProvider
 
         .state('visit-confirmation', {
-                url: '/visit-confirmation',
+                url: '/visit-confirmation/:score',
                 templateUrl: 'templates/visit-confirmation.html',
-                controller: 'VisitConfirmationCtrl'
+                controller: function($scope, $stateParams) {
+                        $scope.total = $stateParams.score;
+                }
         })
 
         // setup an abstract state for the tabs directive
@@ -43,7 +45,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
                 templateUrl: 'templates/tabs.html'
         })
 
-        // Each tab has its own nav history stack:
         .state('tab.disclaimer', {
                 url: '/disclaimer',
                 views: {
