@@ -2,6 +2,10 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 
                 'DisclaimerModule', 'PatientQuestionsModule'])
 
+.config(function($ionicConfigProvider) {
+    $ionicConfigProvider.tabs.position('bottom');
+})
+
 .run(function($ionicPlatform){
         $ionicPlatform.ready(function() {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
