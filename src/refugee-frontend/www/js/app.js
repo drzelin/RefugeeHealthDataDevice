@@ -34,7 +34,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
                 url: '/visit-confirmation/:score',
                 templateUrl: 'templates/visit-confirmation.html',
                 controller: function($scope, $stateParams) {
-                        $scope.total = $stateParams.score;
+                        //$scope.total = $stateParams.score;
+                        $scope.scores = {
+                                "total": 1.14,
+                                "anxiety": 1.56,
+                                "depression": 0.99,
+                                "dsm": 1.81,
+                                "trauma": 2.60,
+                        };
                 }
         })
 

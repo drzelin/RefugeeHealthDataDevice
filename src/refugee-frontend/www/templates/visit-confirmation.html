@@ -1,12 +1,82 @@
 <ion-view>
-        <ion-content class="padding">
+        <div class="bar bar-header bar-dark">
+                  <h1 class="title">Patient Summary</h1>
+        </div>
+        <ion-content class="padding has-header">
                 <div class="card">
-                        <div class="item item-text-wrap balanced">
-                                Patient visit over
+                <div class="item item-divider">
+                        <div class="title">
+                                Trauma Symptoms Scoring
                         </div>
                 </div>
-                <button ng-click="submit()" class="button button-block button-positive">
-                    Go back to disclaimer page
+                <div class="padding">
+                <div class="row">
+                        <div class="col col-40">
+                                <h3 ng-class="{'report-score': true, 'balanced': scores.trauma <= 2.5, 'assertive': scores.trauma > 2.5}">{{ scores.trauma }}</h3>
+                        </div>
+                        <div class="col">
+                                <h3 style="color:#E0E0E0"> Total Score </h3>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col col-40">
+                                <h3 ng-class="{'report-score': true, 'balanced': scores.trauma <= 2.5, 'assertive': scores.trauma > 2.5}">{{ scores.dsm }}</h3>
+                        </div>
+                        <div class="col">
+                                <h3 style="color:#E0E0E0"> DSM-IV Score </h3>
+                        </div>
+                </div>
+                <div class="row">
+                        <p> Individuals with scores on DSM-IV and/or total
+                        &gt; 2.5 are considered symptomatic for PTSD.
+                        See manual for additional information. </p>
+                </div>
+                </div>
+                <div class="item item-divider">
+                        <div class="title">
+                        Hopkins Scoring
+                        </div>
+                </div>
+                <div class="padding">
+                <div class="row">
+                        <div class="col col-40">
+                                <h3 ng-class="{'report-score': true, 'balanced': scores.trauma <= 1.75, 'assertive': scores.trauma > 1.75}">{{ scores.total }}</h3>
+                        </div>
+                        <div class="col">
+                                <h3 style="color:#E0E0E0"> Total Score </h3>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col col-40">
+                                <h3 ng-class="{'report-score': true, 'balanced': scores.trauma <= 1.75, 'assertive': scores.trauma > 1.75}">{{ scores.anxiety }}</h3>
+                        </div>
+                        <div class="col">
+                                <h3 style="color:#E0E0E0"> Anxiety Score </h3>
+                        </div>
+                </div>
+                <div class="row">
+                        <div class="col col-40">
+                                <h3 ng-class="{'report-score': true, 'balanced': scores.trauma <= 1.75, 'assertive': scores.trauma > 1.75}">{{ scores.depression }}</h3>
+                        </div>
+                        <div class="col">
+                                <h3 style="color:#E0E0E0"> Depression Score </h3>
+                        </div>
+                </div>
+                <div class="row">
+                        <p> Individuals with scores on anxiety and/or depression and/or total
+                        greater than 1.75 are considered symptomatic. </p>
+                </div>
+                <div class="row">
+                        <p> Note: &ge; 1.75 is now considered a scientifically valid cut-off
+                        point. </p>
+                </div>
+                </div>
+                </div>
+                <button ng-click="export()" class="button button-block button-">
+                        Export as PDF
+                </button>
+                <button ng-click="submit()" class="button button-block button-assertive">
+                        Exit
                 </button>
         </ion-content>
 </ion-view>
