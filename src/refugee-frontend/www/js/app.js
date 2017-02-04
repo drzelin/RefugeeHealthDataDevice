@@ -2,6 +2,10 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 
                 'DisclaimerModule', 'PatientQuestionsModule'])
 
+.config(function($ionicConfigProvider) {
+    $ionicConfigProvider.tabs.position('bottom');
+})
+
 .run(function($ionicPlatform){
         $ionicPlatform.ready(function() {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -27,9 +31,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
         $stateProvider
 
         .state('visit-confirmation', {
-                url: '/visit-confirmation',
+                url: '/visit-confirmation/:score',
                 templateUrl: 'templates/visit-confirmation.html',
-                controller: 'VisitConfirmationCtrl'
+                controller: function($scope, $stateParams) {
+                        $scope.total = $stateParams.score;
+                }
         })
 
         // setup an abstract state for the tabs directive
@@ -39,7 +45,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
                 templateUrl: 'templates/tabs.html'
         })
 
-        // Each tab has its own nav history stack:
         .state('tab.disclaimer', {
                 url: '/disclaimer',
                 views: {
