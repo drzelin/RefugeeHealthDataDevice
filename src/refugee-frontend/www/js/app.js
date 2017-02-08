@@ -33,15 +33,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
         .state('visit-confirmation', {
                 url: '/visit-confirmation/:total/:dsm/:trauma/:anxiety/:depression',
                 templateUrl: 'templates/visit-confirmation.html',
-                controller: function($scope, $stateParams) {
-                        
-                        // two decimal places
-                        for (key in $stateParams) {
-                                $stateParams[key] = Number($stateParams[key]).toFixed(2);
-                        }
-
-                        $scope.scores = $stateParams;
-                }
+                controller: 'VisitConfirmationCtrl'
         })
 
         // abstract state for the tabs directive

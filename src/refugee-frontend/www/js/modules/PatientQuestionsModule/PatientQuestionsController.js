@@ -3,28 +3,23 @@ angular.module('PatientQuestionsModule')
 .controller('PatientQuestionsCtrl', function($scope, $state, Questions) {
 
     var questions = [];
-    var traumaSymptomsTotalScore = 0
-        var traumaSymptomsDSMIVScore = 0
-        var anxietyScore = 0
-        var depressionScore = 0
-        $scope.responses={};
 
-        $scope.form = {
-            "paragraphText":[],
-            "hours": [],
-            "minutes" : [],
-            "number": []
-        };
-        
-        Questions.new_patient_questions().then(function (data) {
-            questions = data.questions;
-            $scope.categories = data.categories;
-            $scope.responses = [];
-            for (var key in data.categories) { 
-                $scope.responses[key] = {'category': data.categories[key]};
-            }
-            $scope.update(data.categories[0]);
-        });
+    $scope.form = {
+        "paragraphText":[],
+        "hours": [],
+        "minutes" : [],
+        "number": []
+    };
+    
+    Questions.new_patient_questions().then(function (data) {
+        questions = data.questions;
+        $scope.categories = data.categories;
+        $scope.responses = [];
+        for (var key in data.categories) { 
+            $scope.responses[key] = {'category': data.categories[key]};
+        }
+        $scope.update(data.categories[0]);
+    });
 
     $scope.update = function(category) {
         $scope.selected = category;
@@ -67,50 +62,45 @@ angular.module('PatientQuestionsModule')
     }
 
     $scope.submit = function(paragraph) {
+        traumaSymptomsTotalScore = 0
+        traumaSymptomsDSMIVScore = 0
+        anxietyScore = 0
+        depressionScore = 0
 
         for (var cat in $scope.responses) {
             for (var key in $scope.responses[cat]) {
-                if ($scope.responses[cat].hasOwnProperty(key)) {
-                    if ($scope.selected == "trauma_symptoms_DSM-IV") {
+                if (key != "category") {
+                    if ($scope.responses[cat]["category"] == "Trauma Symptoms DSM-IV") {
                         traumaSymptomsDSMIVScore = traumaSymptomsDSMIVScore + $scope.responses[cat][key].body;
                     }
-                    if ($scope.selected == "trauma_symptoms_general"){
+                    if ($scope.selected == "Trauma Symptoms General"){
                         traumaSymptomsTotalScore = traumaSymptomsTotalScore + $scope.responses[cat][key].body;
                     }
-                    if ($scope.selected == "hopkins_symptom_checklist_part1") {
+                    if ($scope.selected == "Hopkins Symptom Checklist Part1") {
                         anxietyScore = anxietyScore + $scope.responses[cat][key].body;
                     }
-                    if ($scope.selected == "hopkins_symptom_checklist_part2") {
+                    if ($scope.selected == "Hopkins Symptom Checklist Part2") {
                         depressionScore = depressionScore + $scope.responses[cat][key].body;
                     }
                 }
             }
         }
 
-        /*alert("Trauma Symptoms DSM-IV Score = " + (traumaSymptomsDSMIVScore/16));
-            alert("Trauma Symptoms Total Score = " + ((traumaSymptomsDSMIVScore + traumaSymptomsTotalScore)/40));
-            alert("Anxiety Score = " + (anxietyScore/10));
-            alert("Depression Score = " + (depressionScore/15));
-            alert("Total Score = " + ((depressionScore + anxietyScore)/25));*/
-
         pdfPrepare();
+        traumaSymptomsTotalScore = traumaSymptomsTotalScore + traumaSymptomsDSMIVScore;
 
         var score = {
                 "total": ((depressionScore + anxietyScore)/25.00),
-                "dsm": traumaSymptomsDSMIVScore,
-                "trauma": traumaSymptomsTotalScore,
-                "anxiety": anxietyScore,
-                "depression": depressionScore
+                "dsm": (traumaSymptomsDSMIVScore/16.00),
+                "trauma": (traumaSymptomsTotalScore/40.00),
+                "anxiety": (anxietyScore/10.00),
+                "depression": (depressionScore/15.00)
         };
 
-        $state.go('visit-confirmation', score);
-
+        $state.transitionTo('visit-confirmation', score, {reload: true});
     }
 
     $scope.questionAnswered = function(response, questionBody, dropdownBody) {
-        console.log("response: " + response);
-        console.log("question: " + questionBody);
-        console.log("dropdown: " + dropdownBody);
         for (var index in $scope.responses) {
             if ($scope.responses[index]['category'] == $scope.selected) {
                 if (dropdownBody) {
