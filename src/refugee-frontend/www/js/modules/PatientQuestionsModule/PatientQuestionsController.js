@@ -67,7 +67,7 @@ angular.module('PatientQuestionsModule')
     }
 
     $scope.submit = function(paragraph) {
-        console.log(paragraph);
+
         for (var cat in $scope.responses) {
             for (var key in $scope.responses[cat]) {
                 if ($scope.responses[cat].hasOwnProperty(key)) {
@@ -86,16 +86,25 @@ angular.module('PatientQuestionsModule')
                 }
             }
         }
-        // TODO: remove this
-        var total = ((depressionScore + anxietyScore)/25);
+
         /*alert("Trauma Symptoms DSM-IV Score = " + (traumaSymptomsDSMIVScore/16));
             alert("Trauma Symptoms Total Score = " + ((traumaSymptomsDSMIVScore + traumaSymptomsTotalScore)/40));
             alert("Anxiety Score = " + (anxietyScore/10));
             alert("Depression Score = " + (depressionScore/15));
             alert("Total Score = " + ((depressionScore + anxietyScore)/25));*/
 
-            pdfPrepare();
-        $state.transitionTo('visit-confirmation', {"score":total});
+        pdfPrepare();
+
+        var score = {
+                "total": ((depressionScore + anxietyScore)/25.00),
+                "dsm": traumaSymptomsDSMIVScore,
+                "trauma": traumaSymptomsTotalScore,
+                "anxiety": anxietyScore,
+                "depression": depressionScore
+        };
+
+        $state.go('visit-confirmation', score);
+
     }
 
     $scope.questionAnswered = function(response, questionBody, dropdownBody) {

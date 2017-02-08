@@ -1,4 +1,4 @@
-<ion-view>
+<uion-view>
         <div class="bar bar-header bar-dark">
                   <h1 class="title">Patient Summary</h1>
         </div>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="row">
                         <div class="col col-40">
-                                <h3 ng-class="{'report-score': true, 'balanced': scores.trauma <= 2.5, 'assertive': scores.trauma > 2.5}">{{ scores.dsm }}</h3>
+                                <h3 ng-class="{'report-score': true, 'balanced': scores.dsm <= 2.5, 'assertive': scores.dsm > 2.5}">{{ scores.dsm }}</h3>
                         </div>
                         <div class="col">
                                 <h3 style="color:#E0E0E0"> DSM-IV Score </h3>
@@ -40,7 +40,7 @@
                 <div class="padding">
                 <div class="row">
                         <div class="col col-40">
-                                <h3 ng-class="{'report-score': true, 'balanced': scores.trauma <= 1.75, 'assertive': scores.trauma > 1.75}">{{ scores.total }}</h3>
+                                <h3 ng-class="{'report-score': true, 'balanced': scores.total <= 1.75, 'assertive': scores.total > 1.75}">{{ scores.total }}</h3>
                         </div>
                         <div class="col">
                                 <h3 style="color:#E0E0E0"> Total Score </h3>
@@ -48,7 +48,7 @@
                 </div>
                 <div class="row">
                         <div class="col col-40">
-                                <h3 ng-class="{'report-score': true, 'balanced': scores.trauma <= 1.75, 'assertive': scores.trauma > 1.75}">{{ scores.anxiety }}</h3>
+                                <h3 ng-class="{'report-score': true, 'balanced': scores.anxiety <= 1.75, 'assertive': scores.anxiety > 1.75}">{{ scores.anxiety }}</h3>
                         </div>
                         <div class="col">
                                 <h3 style="color:#E0E0E0"> Anxiety Score </h3>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="row">
                         <div class="col col-40">
-                                <h3 ng-class="{'report-score': true, 'balanced': scores.trauma <= 1.75, 'assertive': scores.trauma > 1.75}">{{ scores.depression }}</h3>
+                                <h3 ng-class="{'report-score': true, 'balanced': scores.depression <= 1.75, 'assertive': scores.depression > 1.75}">{{ scores.depression }}</h3>
                         </div>
                         <div class="col">
                                 <h3 style="color:#E0E0E0"> Depression Score </h3>

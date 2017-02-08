@@ -31,21 +31,20 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
         $stateProvider
 
         .state('visit-confirmation', {
-                url: '/visit-confirmation/:score',
+                url: '/visit-confirmation/:total/:dsm/:trauma/:anxiety/:depression',
                 templateUrl: 'templates/visit-confirmation.html',
                 controller: function($scope, $stateParams) {
-                        //$scope.total = $stateParams.score;
-                        $scope.scores = {
-                                "total": 1.14,
-                                "anxiety": 1.56,
-                                "depression": 0.99,
-                                "dsm": 1.81,
-                                "trauma": 2.60,
-                        };
+                        
+                        // two decimal places
+                        for (key in $stateParams) {
+                                $stateParams[key] = Number($stateParams[key]).toFixed(2);
+                        }
+
+                        $scope.scores = $stateParams;
                 }
         })
 
-        // setup an abstract state for the tabs directive
+        // abstract state for the tabs directive
         .state('tab', {
                 url: '/tab',
                 abstract: true,
