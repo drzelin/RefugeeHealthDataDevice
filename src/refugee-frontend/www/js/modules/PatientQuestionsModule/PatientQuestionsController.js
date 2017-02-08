@@ -11,9 +11,9 @@ angular.module('PatientQuestionsModule')
 
         $scope.form = {
             "paragraphText":[],
-            "hours":[],
-            "minutes" :[],
-            "number":[]
+            "hours": [],
+            "minutes" : [],
+            "number": []
         };
         
         Questions.new_patient_questions().then(function (data) {
