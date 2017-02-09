@@ -1,22 +1,24 @@
 angular.module('PatientQuestionsModule')
 
-.controller('PatientQuestionsCtrl', function($scope, $state, Questions) {
+.controller('PatientQuestionsCtrl', function($scope, $state, Questions, ResponseData) {
 
     var questions = [];
 
-    $scope.form = {
-        "paragraphText":[],
-        "hours": [],
-        "minutes" : [],
-        "number": []
-    };
-    
+    $scope.forms = {};
+
     Questions.new_patient_questions().then(function (data) {
         questions = data.questions;
         $scope.categories = data.categories;
         $scope.responses = [];
         for (var key in data.categories) { 
             $scope.responses[key] = {'category': data.categories[key]};
+            $scope.forms[data.categories[key]] = {
+                "paragraphText":[],
+                "hours": [],
+                "minutes" : [],
+                "number": [],
+                "additional_comments": ""
+            };
         }
         $scope.update(data.categories[0]);
     });
@@ -97,7 +99,10 @@ angular.module('PatientQuestionsModule')
                 "depression": (depressionScore/15.00)
         };
 
-        $state.transitionTo('visit-confirmation', score, {reload: true});
+        ResponseData.set_response_data($scope.responses);
+        $state.go('visit-confirmation', score, {
+                reload: true
+        });
     }
 
     $scope.questionAnswered = function(response, questionBody, dropdownBody) {

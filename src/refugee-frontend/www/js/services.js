@@ -4,10 +4,32 @@ angular.module('starter.services', [])
         // TODO: finish this obv
 })
 
+.factory("ResponseData", function($http) {
+
+        var response_data = {};
+        return {
+                set_response_data: function(data) {
+                        response_data = data;
+                },
+                get_response_data: function() {
+                        return response_data;
+                },
+                generatePDF: function(data) {
+                        var promise = $http({
+                                method: "POST",
+                                url: "http://capstonespring2017.herokuapp.com/genPDF",
+                                data: data
+                        });
+                        return promise;
+                }
+        };
+
+})
+
 .factory('Questions', function($http) {
 
         return {
-                existing_patient_questions: function() {
+               existing_patient_questions: function() {
 
                         var promise =  $http({
                                 method: "GET",

@@ -1,9 +1,15 @@
 angular.module('starter.controllers', [])
 
-.controller('VisitConfirmationCtrl', function($scope, $state, $stateParams) {
+.controller('VisitConfirmationCtrl', function($scope, $state, $sce, $stateParams, Questions, ResponseData) {
 
     $scope.submit = function() {
-        $state.transitionTo('tab.disclaimer');
+        ResponseData.generatePDF(ResponseData.get_response_data()).then(function(data) {
+                console.log(data.data);
+                var file = new Blob([data.data], {type: 'application/pdf'});
+                var fileURL = URL.createObjectURL(file);
+                $scope.pdfcontent = $sce.trustAsResourceUrl(fileURL);
+        });
+        //$state.transitionTo('tab.disclaimer');
     }
     
     // two decimal places
@@ -12,4 +18,5 @@ angular.module('starter.controllers', [])
     }
 
     $scope.scores = $stateParams;
+
 });
