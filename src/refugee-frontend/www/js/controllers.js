@@ -1,4 +1,4 @@
-angular.module('starter.controllers', ["ngCordova"])
+angular.module('starter.controllers', [])
 
 .controller('VisitConfirmationCtrl', function($scope, $state, $sce, $stateParams, $cordovaFile, Questions, ResponseData) {
 
