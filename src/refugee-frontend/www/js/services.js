@@ -14,7 +14,9 @@ angular.module('starter.services', [])
                 get_response_data: function() {
                         return response_data;
                 },
-                generatePDF: function(data) {
+                generatePDF: function(data, email) {
+                        data.email = email;
+                        console.log(data);
                         var promise = $http({
                                 method: "POST",
                                 url: "http://capstonespring2017.herokuapp.com/genPDF",

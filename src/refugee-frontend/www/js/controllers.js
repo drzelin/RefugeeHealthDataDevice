@@ -1,22 +1,24 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ["ngCordova"])
 
-.controller('VisitConfirmationCtrl', function($scope, $state, $sce, $stateParams, Questions, ResponseData) {
+.controller('VisitConfirmationCtrl', function($scope, $state, $sce, $stateParams, $cordovaFile, Questions, ResponseData) {
 
-    $scope.submit = function() {
-        ResponseData.generatePDF(ResponseData.get_response_data()).then(function(data) {
-                console.log(data.data);
-                var file = new Blob([data.data], {type: 'application/pdf'});
-                var fileURL = URL.createObjectURL(file);
-                $scope.pdfcontent = $sce.trustAsResourceUrl(fileURL);
-        });
-        //$state.transitionTo('tab.disclaimer');
-    }
-    
-    // two decimal places
-    for (key in $stateParams) {
-            $stateParams[key] = Number($stateParams[key]).toFixed(2);
-    }
+        $scope.emailPrompt = false;
+        $scope.submit = function(email) {
+                ResponseData.generatePDF(ResponseData.get_response_data(), email.address).then(function(data) {
+                        console.log(data);
+                });
+                //$state.transitionTo('tab.disclaimer');
+        }
 
-    $scope.scores = $stateParams;
+        $scope.exportPDF = function() {
+                $scope.emailPrompt = true;
+        }
+
+        // two decimal places
+        for (key in $stateParams) {
+                $stateParams[key] = Number($stateParams[key]).toFixed(2);
+        }
+
+        $scope.scores = $stateParams;
 
 });
