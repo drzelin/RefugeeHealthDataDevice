@@ -1,9 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('VisitConfirmationCtrl', function($scope, $state, $sce, $stateParams, $cordovaFile, Questions, ResponseData) {
+.controller('VisitConfirmationCtrl', function($scope, $state, $sce, $stateParams, Questions, ResponseData) {
 
         $scope.emailPrompt = false;
         $scope.submit = function(email) {
+                console.log(email);
                 ResponseData.generatePDF(ResponseData.get_response_data(), email.address).then(function(data) {
                         console.log(data);
                 });

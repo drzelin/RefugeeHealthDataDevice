@@ -1,6 +1,14 @@
 # Technical Design Document
 
 # Status Reports
+<strong>2/13/17</strong>
+<p>
+       We've continued to work on the first phase of our project. We have all of the 
+       components completed except for emailing the pdf once the form is complete. We
+       are starting to look into getting the app up on the android and ios stores so
+       that our sponsers can access it.
+</p>
+
 <strong>1/30/17</strong>
 <p>
        We've been working consistenly on the first phase of our project. We have a front
