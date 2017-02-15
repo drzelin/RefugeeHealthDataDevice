@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
 
         $scope.emailPrompt = false;
         $scope.submit = function(email) {
-                console.log(email);
+                console.log('THIS IS THE EMAIL' + email);
                 ResponseData.generatePDF(ResponseData.get_response_data(), email.address).then(function(data) {
                         console.log(data);
                 });
