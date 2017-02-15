@@ -5,8 +5,9 @@ angular.module('starter.controllers', [])
         $scope.emailPrompt = false;
         $scope.submit = function(email) {
                 console.log(email);
-                ResponseData.generatePDF(ResponseData.get_response_data(), email).then(function(data) {
+                ResponseData.generatePDF(ResponseData.get_response_data(), email.address).then(function(data) {
                         console.log(data);
+                        console.log('this is what you want ' + email.address)
                 });
                 //$state.transitionTo('tab.disclaimer');
         }
