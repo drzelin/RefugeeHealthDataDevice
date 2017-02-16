@@ -81,12 +81,12 @@
                                         <span class="input-label">Email</span>
                                         <input type="text" placeholder="Email" ng-model="email.address">
                                 </label>
-                                <button ng-click="submit(email)" class="button button-block button-balanced">
+                                <button ng-click="sendEmail(email)" class="button button-block button-balanced">
                                         Confirm
                                 </button>
                         </form>
                 </ion-item>
-                <button class="button button-block button-assertive">
+                <button class="button button-block button-assertive" ng-click="submit()">
                         Exit
                 </button>
         </ion-content>

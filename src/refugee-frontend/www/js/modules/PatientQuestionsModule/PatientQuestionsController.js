@@ -61,6 +61,7 @@ angular.module('PatientQuestionsModule')
                 }
             }
         }
+        return temp;
     }
 
     $scope.submit = function(paragraph) {
@@ -88,7 +89,6 @@ angular.module('PatientQuestionsModule')
             }
         }
 
-        pdfPrepare();
         traumaSymptomsTotalScore = traumaSymptomsTotalScore + traumaSymptomsDSMIVScore;
 
         var score = {
@@ -99,6 +99,7 @@ angular.module('PatientQuestionsModule')
                 "depression": (depressionScore/15.00)
         };
 
+        $scope.responses = pdfPrepare();
         ResponseData.set_response_data($scope.responses);
         $state.go('visit-confirmation', score, {
                 reload: true

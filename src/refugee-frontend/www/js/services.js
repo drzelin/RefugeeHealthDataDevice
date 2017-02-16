@@ -19,7 +19,7 @@ angular.module('starter.services', [])
                         console.log(data);
                         var promise = $http({
                                 method: "POST",
-                                url: "http://capstonespring2017.herokuapp.com/genPDF",
+                                url: "http://capstonespring2017.herokuapp.com/genPDF?email=" + email,
                                 data: data
                         });
                         return promise;
