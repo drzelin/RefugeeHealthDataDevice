@@ -12,6 +12,7 @@ angular.module('starter.services', [])
                         response_data = data;
                 },
                 get_response_data: function() {
+                        console.log(response_data);
                         return response_data;
                 },
                 generatePDF: function(data, email) {
