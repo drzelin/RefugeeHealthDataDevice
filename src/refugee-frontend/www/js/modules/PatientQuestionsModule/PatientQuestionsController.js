@@ -14,9 +14,13 @@ angular.module('PatientQuestionsModule')
             $scope.responses[key] = {'category': data.categories[key]};
             $scope.forms[data.categories[key]] = {
                 "paragraphText":[],
-                "hours": [],
-                "minutes" : [],
-                "number": [],
+                "question": [{
+                        "dropdown": [{
+                                "hours": null,
+                                "minutes" : null,
+                                "number": null
+                        }]
+                }],
                 "additional_comments": ""
             };
         }
@@ -65,6 +69,7 @@ angular.module('PatientQuestionsModule')
     }
 
     $scope.submit = function(paragraph) {
+
         traumaSymptomsTotalScore = 0
         traumaSymptomsDSMIVScore = 0
         anxietyScore = 0

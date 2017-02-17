@@ -45,7 +45,7 @@
                                 <i>Extremely</i>
                             </button>
                         </span>
-                        <span class="item-input-inset" ng-click="onClick()" ng-show="responseType('bool')">
+                        <span class="item-input-inset" ng-show="responseType('bool')">
                             <button id="5"
                                     ng-class="{'button-outline':question.value!=5}"
                                     class="button button-small
@@ -70,7 +70,7 @@
                                 <i class="icon ion-close-round"></i>
                             </button>
                         </span>
-                        <span class="item-input-inset" ng-click="onClick()" ng-show="responseType('paragraph')">
+                        <span class="item-input-inset" ng-show="responseType('paragraph')">
                             <label class="item item-input item-floating-label">
                                 <span class="input-label">Response</span>
                                 <input type="text" placeholder="Response" name="input" ng-model ="forms[selected].paragraphText[question_num]"\>
@@ -80,9 +80,10 @@
                     </ion-item>
                     <ion-item class="item-accordion"
                               ng-repeat="dropdown in question.dropdown track by $index"
+                              ng-init="dropdown_num = $index"
                               ng-show="showDropdown(question.value)">
                         {{ dropdown.body }}
-                        <span class="item-input-inset" ng-click="onClick()" ng-show="'bool' == dropdown.question_type">
+                        <span class="item-input-inset" ng-show="'bool' == dropdown.question_type">
                             <button id="8"
                                     ng-class="{'button-outline':dropdown.value!='yes'}"
                                     class="button button-small
@@ -107,20 +108,20 @@
                                 <i class="icon ion-close-round"></i>
                             </button>
                         </span>
-                        <span class="item-input-inset" ng-click="onClick()" ng-show="'time' == dropdown.question_type">
+                        <span class="item-input-inset" ng-show="'time' == dropdown.question_type">
                             <label class="item item-input">
                                 <span class="input-label">Hours</span>
-                                <input type="number" name="input" ng-model="forms[selected].hours[question_num]"\>
+                                <input type="number" name="input" ng-model="forms[selected].question[question_num].dropdown[dropdown_num].hours"\>
                             </label>
                             <label class="item item-input">
                                 <span class="input-label">Minutes</span>
-                                <input type="number" name="input" ng-model="forms[selected].minutes[question_num]"\s>
+                                <input type="number" name="input" ng-model="forms[selected].question[question_num].dropdown[dropdown_num].minutes"\s>
                             </label>
                         </span>
-                        <span class="item-input-inset" ng-click="onClick()" ng-show="'num' == dropdown.question_type">
+                        <span class="item-input-inset" ng-show="'num' == dropdown.question_type">
                             <label class="item item-input">
                                 <span class="input-label">Number</span>
-                                <input type="number" name="input" ng-model ="forms[selected].number[question_num]">
+                                <input type="number" name="input" ng-model ="forms[selected].question[question_num].dropdown[dropdown_num].number">
                             </label>
                         </span>
                     </ion-item>
