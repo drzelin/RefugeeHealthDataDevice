@@ -105,10 +105,21 @@ angular.module('PatientQuestionsModule')
         };
 
         $scope.responses = pdfPrepare();
+
+        // adding additional comments
+        for (var category in $scope.responses) {
+                console.log($scope.responses[category]);
+                $scope.responses[category].additional_comments = "";
+                $scope.responses[category].additional_comments = $scope.forms[category].additional_comments;
+        }
+
+        console.log($scope);
+
         ResponseData.set_response_data($scope.responses);
         $state.go('visit-confirmation', score, {
                 reload: true
         });
+
     }
 
     $scope.questionAnswered = function(response, questionBody, dropdownBody) {
