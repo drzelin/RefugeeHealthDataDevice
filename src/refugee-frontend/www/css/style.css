@@ -13,9 +13,12 @@
         margin: 3px;
 }
 
-.custom-text {
+.q-horizontal {
         max-width: 60%;
         float: left;
+}
+
+.q-vertical {
 }
 
 .report-score {
