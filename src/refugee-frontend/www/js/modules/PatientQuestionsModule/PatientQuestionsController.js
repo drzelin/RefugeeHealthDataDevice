@@ -35,6 +35,8 @@ angular.module('PatientQuestionsModule')
     }
 
     pdfPrepare = function() {
+        console.log("HI");
+        console.log($scope.responses);
         temp = [];
         for (var catIndex in $scope.responses) {
             temp[catIndex] = {}
@@ -59,6 +61,9 @@ angular.module('PatientQuestionsModule')
                             temp[catIndex]['questions'][questionCounter]['question'] = key;
                             temp[catIndex]['questions'][questionCounter]['answer'] = {};
                             temp[catIndex]['questions'][questionCounter]['answer'] = $scope.responses[catIndex][key][attribute];
+                            if (key == 'additional_comments') {
+                                temp[catIndex]['questions'][questionCounter]['answer'] = $scope.responses[catIndex][key];
+                            }
                         }
                     }
                     questionCounter = questionCounter + 1
@@ -104,17 +109,14 @@ angular.module('PatientQuestionsModule')
                 "depression": (depressionScore/15.00)
         };
 
-        $scope.responses = pdfPrepare();
-
         // adding additional comments
-        for (var category in $scope.responses) {
-                console.log($scope.responses[category]);
-                $scope.responses[category].additional_comments = "";
-                $scope.responses[category].additional_comments = $scope.forms[category].additional_comments;
+        for (var catIndex in $scope.responses) {
+                $scope.responses[catIndex]['additional_comments'] = $scope.forms[$scope.responses[catIndex]['category']].additional_comments;
         }
 
-        console.log($scope);
-
+        $scope.responses = pdfPrepare();
+        console.log("out of pdfPrepare()");
+        console.log($scope.responses);
         ResponseData.set_response_data($scope.responses);
         $state.go('visit-confirmation', score, {
                 reload: true
