@@ -7,7 +7,7 @@
         <ion-content class="has-header">
             <form ng-model="forms">
             <ion-list>
-                <div ng-repeat="question in questions track by $index" ng-init="question_num = $index">
+                <div ng-repeat="question in questions track by $index" ng-init="question_num = $index; question.value=0">
                     <ion-item class="item-stable" ng-show="!responseType(question.body)">
                             <!-- &nbsp; -->
                             <div ng-show="responseType('scale') == false">
@@ -33,7 +33,6 @@
                                     ng-click="question.value=2;questionAnswered(question.value,question.body)">
                                 <i>A little</i>
                             </button>
-
                             <button id="3"
                                     ng-class="{'button-outline':question.value!=3}"
                                     class="button button-small
@@ -49,6 +48,14 @@
                                     select-button"
                                     ng-click="question.value=4;questionAnswered(question.value,question.body)">
                                 <i>Extremely</i>
+                            </button>
+                            <button id="0"
+                                    ng-class="{'button-outline':question.value!=0}"
+                                    class="button button-small
+                                    button-dark
+                                    select-button"
+                                    ng-click="question.value=0;questionAnswered(question.value,question.body)">
+                                <i>Unanswered</i>
                             </button>
                         </span>
                         <span class="item-input-inset" ng-show="responseType('bool')">
@@ -75,6 +82,14 @@
                                     ng-click="question.value=7;questionAnswered(question.value,question.body)">
                                 <i class="icon ion-close-round"></i>
                             </button>
+                            <button id="0"
+                                    ng-class="{'button-outline':question.value!=0}"
+                                    class="button button-small
+                                    button-dark
+                                    select-button"
+                                    ng-click="question.value=0;questionAnswered(question.value,question.body)">
+                                <i>Unanswered</i>
+                            </button>
                         </span>
                         <span class="item-input-inset" ng-show="responseType('paragraph')">
                             <label class="item item-input item-floating-label">
@@ -89,7 +104,7 @@
                               ng-init="dropdown_num = $index"
                               ng-show="showDropdown(question.value)">
                         {{ dropdown.body }}
-                        <span class="item-input-inset" ng-show="'bool' == dropdown.question_type">
+                        <span class="item-input-inset" ng-show="'bool' == dropdown.question_type" ng-init="dropdown.value='unanswered'">
                             <button id="8"
                                     ng-class="{'button-outline':dropdown.value!='yes'}"
                                     class="button button-small
@@ -112,6 +127,14 @@
                                     select-button"
                                     ng-click="dropdown.value='no';questionAnswered(dropdown.value, question.body, dropdown.body)">
                                 <i class="icon ion-close-round"></i>
+                            </button>
+                            <button id="0"
+                                    ng-class="{'button-outline':dropdown.value!='unanswered'}"
+                                    class="button button-small
+                                    button-dark
+                                    select-button"
+                                    ng-click="dropdown.value='unanswered';questionAnswered(question.value,question.body)">
+                                <i>Unanswered</i>
                             </button>
                         </span>
                         <span class="item-input-inset" ng-show="'time' == dropdown.question_type">

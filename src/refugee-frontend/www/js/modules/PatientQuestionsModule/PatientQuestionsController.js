@@ -23,6 +23,9 @@ angular.module('PatientQuestionsModule')
                 }],
                 "additional_comments": ""
             };
+            for (var qs in questions[data.categories[key]]) {
+                $scope.responses[key][questions[data.categories[key]][qs]['body']] = {'body': 0};
+            }
         }
         $scope.update(data.categories[0]);
     });
