@@ -36,8 +36,8 @@ angular.module('starter.services', [])
 
                         var promise =  $http({
                                 method: "GET",
-                                //url: "dummy-question-data.json"
-                                url: "http://capstonespring2017.herokuapp.com/getQuestions"
+                                url: "question_list.json"
+                                //url: "http://capstonespring2017.herokuapp.com/getQuestions"
                         }).then(function success(response) {
                                 var questionData = {};
                                 questionData.categories = Object.keys(response.data);
@@ -55,8 +55,8 @@ angular.module('starter.services', [])
 
                         var promise =  $http({
                                 method: "GET",
-                                //url: "dummy-new-patient-data.json"
-                                url: "http://capstonespring2017.herokuapp.com/getQuestions"
+                                url: "question_list.json"
+                                //url: "http://capstonespring2017.herokuapp.com/getQuestions"
                         }).then(function success(response) {
                                 var questionData = {};
                                 questionData.categories = Object.keys(response.data);

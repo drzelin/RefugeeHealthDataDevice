@@ -8,23 +8,23 @@ angular.module('starter.controllers', [])
                     "questions":[
                         {
                             "question":"Trauma Symptoms Total Score",
-                            "answer": "#" + $stateParams.trauma
+                            "answer": $stateParams.trauma
                         },
                         {
                             "question":"Trauma Symptoms DSM-IV Score",
-                            "answer": "#" + $stateParams.dsm
+                            "answer": $stateParams.dsm
                         },
                         {
                             "question":"Hopkins Total Score",
-                            "answer": "#" + $stateParams.total
+                            "answer": $stateParams.total
                         },
                         {
                             "question":"Hopkins Anxiety Score",
-                            "answer": "#" + $stateParams.anxiety
+                            "answer": $stateParams.anxiety
                         },
                         {
                             "question":"Hopkins Depression Score",
-                            "answer": "#" + $stateParams.depression
+                            "answer": $stateParams.depression
                         }
                     ]
                 };
