@@ -106,26 +106,26 @@
                         {{ dropdown.body }}
                         <span class="item-input-inset" ng-show="'bool' == dropdown.question_type" ng-init="dropdown.value='unanswered'">
                             <button id="8"
-                                    ng-class="{'button-outline':dropdown.value!='yes'}"
+                                    ng-class="{'button-outline':dropdown.value!='Yes'}"
                                     class="button button-small
                                     button-balanced
                                     select-button"
-                                    ng-click="dropdown.value='yes';questionAnswered(dropdown.value, question.body, dropdown.body)">
+                                    ng-click="dropdown.value='Yes';questionAnswered(dropdown.value, question.body, dropdown.body)">
                                 <i class="icon ion-checkmark-round"></i>
                             </button>
                             <button id="9"
-                                    ng-class="{'button-outline':dropdown.value!='neutral'}"
+                                    ng-class="{'button-outline':dropdown.value!='Neutral'}"
                                     class="button button-small
                                     button-dark select-button"
-                                    ng-click="dropdown.value='neutral';questionAnswered(dropdown.value, question.body, dropdown.body)">
+                                    ng-click="dropdown.value='Neutral';questionAnswered(dropdown.value, question.body, dropdown.body)">
                                 <i class="icon ion-minus-round"></i>
                             </button>
                             <button id="10"
-                                    ng-class="{'button-outline':dropdown.value!='no'}"
+                                    ng-class="{'button-outline':dropdown.value!='No'}"
                                     class="button button-small
                                     button-assertive
                                     select-button"
-                                    ng-click="dropdown.value='no';questionAnswered(dropdown.value, question.body, dropdown.body)">
+                                    ng-click="dropdown.value='No';questionAnswered(dropdown.value, question.body, dropdown.body)">
                                 <i class="icon ion-close-round"></i>
                             </button>
                             <button id="0"
