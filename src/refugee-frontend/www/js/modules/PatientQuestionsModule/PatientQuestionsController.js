@@ -15,6 +15,7 @@ angular.module('PatientQuestionsModule')
             $scope.forms[data.categories[key]] = {
                 "paragraphText":[],
                 "question": [{
+                        "body": null,
                         "dropdown": [{
                                 "hours": null,
                                 "minutes" : null,
@@ -34,6 +35,7 @@ angular.module('PatientQuestionsModule')
             $scope.forms[$scope.categories[key]] = {
                 "paragraphText":[],
                 "question": [{
+                        "body": null,
                         "dropdown": [{
                                 "hours": null,
                                 "minutes" : null,
@@ -138,13 +140,12 @@ angular.module('PatientQuestionsModule')
             }
         }
 
-        $scope.responses = pdfPrepare();
-        ResponseData.set_response_data($scope.responses);
-        reset();
+        console.log($scope.forms);
+        responses = pdfPrepare();
+        ResponseData.set_response_data(responses);
         $state.go('visit-confirmation', score, {
                 reload: true
         });
-
     }
 
     $scope.questionAnswered = function(response, questionBody, dropdownBody) {
