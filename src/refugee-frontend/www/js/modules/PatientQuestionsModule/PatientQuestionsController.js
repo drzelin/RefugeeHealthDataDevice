@@ -143,6 +143,7 @@ angular.module('PatientQuestionsModule')
         console.log($scope.forms);
         responses = pdfPrepare();
         ResponseData.set_response_data(responses);
+        reset()
         $state.go('visit-confirmation', score, {
                 reload: true
         });
