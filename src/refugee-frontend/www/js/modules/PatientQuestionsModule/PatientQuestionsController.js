@@ -23,12 +23,33 @@ angular.module('PatientQuestionsModule')
                 }],
                 "additional_comments": ""
             };
-            for (var qs in questions[data.categories[key]]) {
-                $scope.responses[key][questions[data.categories[key]][qs]['body']] = {'body': 0};
-            }
         }
+        reset();
         $scope.update(data.categories[0]);
     });
+
+    reset = function() {
+        for (var key in $scope.categories) {
+            $scope.responses[key] = {'category': $scope.categories[key]};
+            $scope.forms[$scope.categories[key]] = {
+                "paragraphText":[],
+                "question": [{
+                        "dropdown": [{
+                                "hours": null,
+                                "minutes" : null,
+                                "number": null
+                        }]
+                }],
+                "additional_comments": ""
+            };
+            for (var qs in questions[$scope.categories[key]]) {
+                if (questions[$scope.categories[key]][qs]['id'] != 'question_type') {
+                    $scope.responses[key][questions[$scope.categories[key]][qs]['body']] = {'body': 0};
+                    questions[$scope.categories[key]][qs]['value'] = 0;
+                }
+            }
+        }
+    }
 
     $scope.update = function(category) {
         $scope.selected = category;
@@ -38,8 +59,6 @@ angular.module('PatientQuestionsModule')
     }
 
     pdfPrepare = function() {
-        console.log("HI");
-        console.log($scope.responses);
         temp = [];
         for (var catIndex in $scope.responses) {
             temp[catIndex] = {}
@@ -114,13 +133,14 @@ angular.module('PatientQuestionsModule')
 
         // adding additional comments
         for (var catIndex in $scope.responses) {
+            if ($scope.forms[$scope.responses[catIndex]['category']]) {    
                 $scope.responses[catIndex]['additional_comments'] = $scope.forms[$scope.responses[catIndex]['category']].additional_comments;
+            }
         }
 
         $scope.responses = pdfPrepare();
-        console.log("out of pdfPrepare()");
-        console.log($scope.responses);
         ResponseData.set_response_data($scope.responses);
+        reset();
         $state.go('visit-confirmation', score, {
                 reload: true
         });
