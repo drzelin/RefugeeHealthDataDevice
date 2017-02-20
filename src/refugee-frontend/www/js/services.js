@@ -172,8 +172,29 @@ angular.module('starter.services', [])
                                                                 response.data[i].questions[j].value = "";
                                                                 break;
                                                 }
+                                                if (response.data[i].questions[j].dropdown) {
+                                                for (var k = 0; k < response.data[i].questions[j].dropdown.length; k++) {
+                                                        switch (response.data[i].questions[j].dropdown[k].type) {
+                                                                case "bool":
+                                                                        response.data[i].questions[j].dropdown[k].value = "N/A";
+                                                                        response.data[i].questions[j].dropdown[k].score = 0;
+                                                                        break;
+                                                                case "time":
+                                                                        response.data[i].questions[j].dropdown[k].value = {
+                                                                                "hours": 0,
+                                                                                "minutes": 0
+                                                                        };
+                                                                        response.data[i].questions[j].dropdown[k].score = 0;
+                                                                        break;
+                                                                case "numerical":
+                                                                        response.data[i].questions[j].dropdown[k].value = 0;
+                                                                        response.data[i].questions[j].dropdown[k].value = "";
+                                                                        break;
+                                                        }
+                                                }}
                                         }
                                 }
+
                                 returnObj.forms = response.data;
                                 returnObj.categories = categories;
 

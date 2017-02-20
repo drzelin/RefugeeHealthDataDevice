@@ -3,7 +3,7 @@ angular.module("PatientQuestionsModule")
 
         function link(scope, element, attr) {
 
-                var selected = 0;
+                var selected = 3;
                 var buttons = [
                 {
                         "color": "button-balanced",
@@ -33,12 +33,37 @@ angular.module("PatientQuestionsModule")
                         "color": "button-light",
                         "hasIcon": false,
                         "body": "N/A",
-                        "value": "No Response",
+                        "value": "N/A",
                         "score": 0,
-                        "selected": false
+                        "selected": true
                 }];
 
+                // TODO: make sure this works
+                function clearDropdown() {
+                        for (var i = 0; i < scope.question.dropdown.length; i++) {
+                                switch (scope.question.dropdown[i].type) {
+                                        case "numerical":
+                                                scope.question.dropdown[i].value = 0;
+                                                break;
+                                        case "time":
+                                                scope.question.dropdown[i].value = {
+                                                        "hours": 0,
+                                                        "minutes": 0
+                                                };
+                                                break;
+                                        case "bool":
+                                                scope.question.dropdown[i].value = "N/A";
+                                                break;
+                                }
+                        }
+                }
+
                 function select(index) {
+ 
+                        // clear dropdown values if "Yes" is not selected
+                        if (selected != 0) {
+                                clearDropdown();
+                        }
 
                         buttons[selected].selected = false;
                         buttons[index].selected = true;
@@ -49,7 +74,8 @@ angular.module("PatientQuestionsModule")
                 }
 
                 function shouldShowDropdown() {
-                        return scope.question.dropdown != undefined && buttons[0].selected;
+                        console.log(scope.question);
+                        return (scope.question.dropdown && buttons[0].selected);
                 }
 
                 scope.select = select;

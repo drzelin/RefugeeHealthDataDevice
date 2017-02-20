@@ -10,7 +10,7 @@ angular.module("PatientQuestionsModule")
                         "body": "N/A",
                         "value": "N/A",
                         "score": 0,
-                        "selected": false
+                        "selected": true
                 },
                 {
                         "color": "button-balanced",

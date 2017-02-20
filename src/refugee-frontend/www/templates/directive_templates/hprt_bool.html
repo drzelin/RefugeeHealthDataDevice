@@ -11,8 +11,9 @@
         </div>
 </ion-item>
 <div ng-show="shouldShowDropdown()">
-<div ng-repeat="d in question.dropdown">
-        <hprt-bool-type ng-show="d.type == 'bool'" question="d"></hprt-bool-type>
-        <ion-item class="ion-accordion" ng-show="d.type !='bool'">{{ d.body }}</ion-item>
+<div ng-repeat="drop in question.dropdown">
+        <hprt-numerical-type ng-show="drop.type == 'numerical'" question="drop"></hprt-numerical-type>
+        <hprt-time-type      ng-show="drop.type == 'time'"      question="drop"></hprt-time-type>
+        <hprt-bool-type      ng-show="drop.type == 'bool'"      question="drop"></hprt-bool-type>
 </div>
 </div>
