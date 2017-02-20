@@ -1,0 +1,9 @@
+<ion-item class="item-stable">
+        <div class="q-vertical"> {{ question.body }} </div>
+        <button ng-repeat="button in buttons"
+                class="button button-small select-button"
+                ng-class="{'{{button.color}}': true, 'button-outline': !button.selected}"
+                ng-click="select($index)">
+                {{ button.body }}
+        </button>
+</ion-item>

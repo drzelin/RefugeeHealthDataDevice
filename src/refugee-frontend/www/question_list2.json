@@ -1,11 +1,8 @@
-{
-        "Trauma Events": [
-                {
-                        "id" : "question_type",
-                        "body" : "bool",
-                        "dropdown" : "no"
-                },
-
+[{
+        "name": "Trauma Events",
+        "type": "bool",
+        "dropdown": false,
+        "questions": [
                 {
                         "id" : "te1" ,
                         "body" : "Lack of Shelter"
@@ -185,15 +182,13 @@
                                 "id" : "te41",
                                 "body" : "Another situation that was very frightening or in which you felt your life was in danger, specify in comments"
                         }	
-
-        ],
-
-        "Personal Description" : [
-                {
-                        "id" : "question_type",
-                        "body" : "paragraph"
-                },
-
+        ]
+},
+{
+        "name": "Personal Description",
+        "type": "paragraph",
+        "dropdown": false,
+        "questions": [
                 {
                         "id" : "pd1",
                         "body" : "Please indicate what you consider to be the most hurtful or terrifying events you have experienced, if any. Please specify where and when these events occurred."
@@ -203,26 +198,23 @@
                         "id" : "pd2",
                         "body" : "Under your current living situation (i.e. refugee camp, country of resettlement, returned from exile, etc.) what is the worst event that has happened to you, if different from above. Please specify where and when these events occurred."
                 }
-        ],
-
-        "Head Injury" : [
-
-                {
-                        "id" : "question_type",
-                        "body" : "bool",
-                        "dropdown" : "yes"
-                },
-
+        ]
+},
+{
+        "name": "Head Injury",
+        "type": "bool",
+        "dropdown": true,
+        "questions": [
                 {
                         "id": "hi1",
                         "body": "Beatings to the head",
                         "dropdown" : [
                                 {
-                                        "question_type" : "bool" ,
+                                        "type" : "bool" ,
                                         "body" : "Loss of consciousness?"
                                 },	
                                 {
-                                        "question_type" : "time",
+                                        "type" : "time",
                                         "body" : "If yes, for how long?"
                                 }
                         ]
@@ -233,11 +225,11 @@
                         "body": "Suffocation or strangulation",
                         "dropdown" : [
                                 {
-                                        "question_type" : "bool" ,
+                                        "type" : "bool" ,
                                         "body" : "Loss of consciousness?"
                                 },	
                                 {
-                                        "question_type" : "time",
+                                        "type" : "time",
                                         "body" : "If yes, for how long?"
                                 }
                         ]
@@ -248,11 +240,11 @@
                         "body": "Near drowning",
                         "dropdown" : [
                                 {
-                                        "question_type" : "bool" ,
+                                        "type" : "bool" ,
                                         "body" : "Loss of consciousness?"
                                 },	
                                 {
-                                        "question_type" : "time",
+                                        "type" : "time",
                                         "body" : "If yes, for how long?"
                                 }
                         ]			
@@ -263,44 +255,41 @@
                         "body": "Other types of injury to the head (e.g. shrapnel, burns, etc.)",
                         "dropdown" : [
                                 {
-                                        "question_type" : "bool" ,
+                                        "type" : "bool" ,
                                         "body" : "Loss of consciousness?"
                                 },	
                                 {
-                                        "question_type" : "time",
+                                        "type" : "time",
                                         "body" : "If yes, for how long?"
                                 }
                         ]
                 },
-
                 {
                         "id": "hi5",
                         "body": "Starvation",
                         "dropdown" : [
                                 {
-                                        "question_type" : "num" ,
+                                        "type" : "numerical" ,
                                         "body" : "Normal weight"
                                 },	
                                 {
-                                        "question_type" : "num",
+                                        "type" : "numerical",
                                         "body" : "Starvation weight"
                                 },
                                 {
-                                        "question_type" : "bool",
+                                        "type" : "bool",
                                         "body" : "Were you near death due to starvation?"
                                 }					
                         ]			
                 }
+        ]
 
-        ],
-
-        "Trauma Symptoms DSM-IV" : [
-
-                { 	"id" : "question_type",
-                        "body" : "scale"
-
-                },
-
+},
+{
+        "name": "Trauma Symptoms DSM-IV",
+        "type": "scale",
+        "dropdown": false,
+        "questions": [
                 {
                         "id" : "ts1",
                         "body" : "Recurrent thoughts or memories of the most hurtful or terrifying events"
@@ -380,15 +369,13 @@
                         "id" : "ts16",
                         "body" : "Sudden emotional or physical reaction when reminded of the most hurtful or traumatic events"
                 }
-        ],
-
-        "Trauma Symptoms General" : [
-
-                { 	"id" : "question_type",
-                        "body" : "scale"
-
-                },
-
+        ]
+},
+{
+        "name": "Trauma Symptoms General",
+        "type": "scale",
+        "dropdown": false,
+        "questions": [
                 {
                         "id" : "ts17",
                         "body" : "Feeling that you have less skills than you had before"
@@ -508,16 +495,13 @@
                         "id" : "ts40",
                         "body" : "Feeling a need for revenge"
                 }
-
-        ],
-
-        "Torture History" : [
-
-                {
-                        "id" : "question_type",
-                        "body" : "bool"
-                },
-
+        ]
+},
+{
+        "name": "Torture History",
+        "type": "bool",
+        "dropdown": false,
+        "questions": [
                 {
                         "id" : "th1",
                         "body" : "Beating, kicking, striking with objects"
@@ -629,16 +613,14 @@
                 {
                         "id" : "th28",
                         "body" : "Other (specify in comments)"
-                }													
-        ],
-
-        "Hopkins Symptom Checklist Part1" : [
-
-                {
-                        "id" : "question_type",
-                        "body" : "scale"
-                },
-
+                }
+        ]
+},
+{
+        "name": "Hopkins Symptom Checklist Part1",
+        "type": "scale",
+        "dropdown": false,
+        "questions": [
                 {
                         "id" : "hs1",
                         "body" : "Suddenly scared for no reason"
@@ -688,15 +670,14 @@
                         "id" : "hs10",
                         "body" : "Feeling restless or can't sit still"
                 }
-        ],
 
-        "Hopkins Symptom Checklist Part2" : [
-
-                {
-                        "id" : "question_type",
-                        "body" : "scale"
-                },
-
+        ]
+},
+{
+        "name": "Hopkins Symptom Checklist Part2",
+        "type": "scale",
+        "dropdown": false,
+        "questions": [
                 {
                         "id" : "hs11",
                         "body" : "Feeling low in energy, slowed down"
@@ -771,8 +752,4 @@
                 }
         ]
 }
-
-
-
-
-
+]

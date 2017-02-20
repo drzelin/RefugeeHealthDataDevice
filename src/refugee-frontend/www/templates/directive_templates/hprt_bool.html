@@ -1,0 +1,18 @@
+<ion-item class="item-stable">
+        <span class="q-horizontal"> {{ question.body }} </span>
+        <div class="item-input-inset">
+        <button ng-repeat="button in buttons" 
+                class="button button-small select-button"
+                ng-class="{'{{button.color}}': true, 'button-outline': !button.selected}"
+                ng-click="select($index)">
+                <i ng-show="button.hasIcon" class="icon {{ button.body }}"></i>
+                <i ng-show="!button.hasIcon">{{ button.body }}</i>
+        </button>
+        </div>
+</ion-item>
+<div ng-show="shouldShowDropdown()">
+<div ng-repeat="d in question.dropdown">
+        <hprt-bool-type ng-show="d.type == 'bool'" question="d"></hprt-bool-type>
+        <ion-item class="ion-accordion" ng-show="d.type !='bool'">{{ d.body }}</ion-item>
+</div>
+</div>
