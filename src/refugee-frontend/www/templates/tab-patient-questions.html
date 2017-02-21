@@ -17,7 +17,10 @@
                         <hprt-paragraph-type question="question" ng-if="forms[selected].type == 'paragraph'"></hprt-paragraph-type>
                         </div>
                 </ion-list>
-                <hprt-additional-comments value="forms[selected].additional_comments"></hprt-additional-comments>
+
+                <div ng-repeat="form in forms">
+                <hprt-additional-comments value="form.additional_comments" ng-show="$index == selected"></hprt-additional-comments>
+                </div>
 
                 <button type="submit" 
                         class="button button-full button-positive"
