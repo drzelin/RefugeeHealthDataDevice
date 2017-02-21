@@ -3,10 +3,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
                 'DisclaimerModule', 'PatientQuestionsModule'])
 
 .config(function($ionicConfigProvider) {
-    $ionicConfigProvider.tabs.position('bottom');
+        $ionicConfigProvider.tabs.position('bottom');
 })
 
-.run(function($ionicPlatform){
+.run(function($ionicPlatform) {
         $ionicPlatform.ready(function() {
                 // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
                 // for form inputs)
@@ -20,6 +20,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
                         StatusBar.styleDefault();
                 }
         });
+
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -35,7 +36,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
                 templateUrl: 'templates/visit-confirmation.html',
                 controller: 'VisitConfirmationCtrl'
         })
-
         // abstract state for the tabs directive
         .state('tab', {
                 url: '/tab',
@@ -64,5 +64,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services',
         });
 
         // if none of the above states are matched, use this as the fallback
-       $urlRouterProvider.otherwise('/tab/disclaimer');
+        $urlRouterProvider.otherwise('/tab/disclaimer');
+
 });

@@ -180,15 +180,12 @@ angular.module('starter.services', [])
                                                                         response.data[i].questions[j].dropdown[k].score = 0;
                                                                         break;
                                                                 case "time":
-                                                                        response.data[i].questions[j].dropdown[k].value = {
-                                                                                "hours": 0,
-                                                                                "minutes": 0
-                                                                        };
+                                                                        response.data[i].questions[j].dropdown[k].value = "";
                                                                         response.data[i].questions[j].dropdown[k].score = 0;
                                                                         break;
                                                                 case "numerical":
                                                                         response.data[i].questions[j].dropdown[k].value = 0;
-                                                                        response.data[i].questions[j].dropdown[k].value = "";
+                                                                        response.data[i].questions[j].dropdown[k].score = "";
                                                                         break;
                                                         }
                                                 }}
