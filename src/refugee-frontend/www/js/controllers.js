@@ -7,24 +7,24 @@ angular.module('starter.controllers', [])
                     "category": "Overview",
                     "questions":[
                         {
-                            "question":"Trauma Symptoms Total Score",
-                            "answer": $stateParams.trauma
+                            "body":"Trauma Symptoms Total Score",
+                            "value": $stateParams.trauma
                         },
                         {
-                            "question":"Trauma Symptoms DSM-IV Score",
-                            "answer": $stateParams.dsm
+                            "body":"Trauma Symptoms DSM-IV Score",
+                            "value": $stateParams.dsm
                         },
                         {
-                            "question":"Hopkins Total Score",
-                            "answer": $stateParams.total
+                            "body":"Hopkins Total Score",
+                            "value": $stateParams.total
                         },
                         {
-                            "question":"Hopkins Anxiety Score",
-                            "answer": $stateParams.anxiety
+                            "body":"Hopkins Anxiety Score",
+                            "value": $stateParams.anxiety
                         },
                         {
-                            "question":"Hopkins Depression Score",
-                            "answer": $stateParams.depression
+                            "body":"Hopkins Depression Score",
+                            "value": $stateParams.depression
                         }
                     ]
                 };
