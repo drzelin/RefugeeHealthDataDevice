@@ -12,9 +12,9 @@
 
                 <ion-list>
                         <div ng-repeat="question in forms[selected].questions">
-                        <hprt-bool-type      question="question" ng-show="forms[selected].type == 'bool'"></hprt-bool-type>
-                        <hprt-scale-type     question="question" ng-show="forms[selected].type == 'scale'"></hprt-scale-type>
-                        <hprt-paragraph-type question="question" ng-show="forms[selected].type == 'paragraph'"></hprt-paragraph-type>
+                        <hprt-bool-type      question="question" ng-if="forms[selected].type == 'bool'"></hprt-bool-type>
+                        <hprt-scale-type     question="question" ng-if="forms[selected].type == 'scale'"></hprt-scale-type>
+                        <hprt-paragraph-type question="question" ng-if="forms[selected].type == 'paragraph'"></hprt-paragraph-type>
                         </div>
                 </ion-list>
                 <hprt-additional-comments value="forms[selected].additional_comments"></hprt-additional-comments>

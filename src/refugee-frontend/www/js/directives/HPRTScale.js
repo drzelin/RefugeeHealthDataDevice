@@ -10,7 +10,7 @@ angular.module("PatientQuestionsModule")
                         "body": "N/A",
                         "value": "N/A",
                         "score": 0,
-                        "selected": true
+                        "selected": false
                 },
                 {
                         "color": "button-balanced",
@@ -41,23 +41,32 @@ angular.module("PatientQuestionsModule")
                         "selected": false
                 }];
 
+                function init() {
+                        
+                        // check to see if anything is selected from before
+                        for (var i = 0; i < buttons.length; i++) {
+                                if (buttons[i].value == scope.question.value) {
+                                        select(i);
+                                        break;
+                                }
+                        }
+
+                }
+
                 function select(index) {
+
                         buttons[selected].selected = false;
                         buttons[index].selected = true;
                         selected = index;
                         scope.question.value = buttons[selected].value;
                         scope.question.score = buttons[selected].score;
-                }
 
-                for (var i = 0; i < buttons.length; i++) {
-                        if (buttons[i].value == scope.value) {
-                                select(i);
-                                break;
-                        }
                 }
 
                 scope.select = select;
                 scope.buttons = buttons;
+
+                init();
 
         }
 
