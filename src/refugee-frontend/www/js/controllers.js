@@ -26,11 +26,12 @@ angular.module('starter.controllers', [])
                             "body":"Hopkins Depression Score",
                             "value": $stateParams.depression
                         }
-                    ]
+                    ],
+                    "additional_comments": "Hopkins and Trauma Scores"
                 };
 
     $scope.sendEmail = function(email) {
-        if (email) {
+        if (email && email.address != '') {
             ResponseData.get_response_data().unshift(finalData);
             pdfData = ResponseData.get_response_data();
             console.log(JSON.stringify(pdfData));
