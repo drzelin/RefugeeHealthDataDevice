@@ -24,6 +24,14 @@ angular.module("PatientQuestionsModule")
 
                 function reformatString() {
 
+                        if (!hours) {
+                                hours = 0;
+                        }
+
+                        if (!minutes) {
+                                minutes = 0;
+                        }
+
                         scope.question.value = hours + " hours and " + minutes + " minutes";
 
                         // secretly place these values into object

@@ -19,7 +19,7 @@
                 </ion-list>
 
                 <div ng-repeat="form in forms">
-                <hprt-additional-comments value="form.additional_comments" ng-show="$index == selected"></hprt-additional-comments>
+                <hprt-additional-comments value="forms[$index].additional_comments" ng-show="$index == selected"></hprt-additional-comments>
                 </div>
 
                 <button type="submit" 

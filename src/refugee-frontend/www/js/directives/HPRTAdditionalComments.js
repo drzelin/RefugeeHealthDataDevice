@@ -2,6 +2,9 @@ angular.module("PatientQuestionsModule")
 .directive("hprtAdditionalComments", function() {
 
         function link(scope, element, attr) {
+                scope.update = function(v) {
+                        scope.value = v;
+                }
         }
 
         return {
