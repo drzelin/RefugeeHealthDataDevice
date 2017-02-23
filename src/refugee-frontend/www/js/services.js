@@ -19,7 +19,7 @@ angular.module('starter.services', [])
                 for (var i = 0; i < questions.length; i++) {
                         score = score + questions[i].score;
                 }
-                return score/40.00;
+                return score;
         }
 
         function computeHopkinsSymptomsAnxiety(questions) {
@@ -69,6 +69,8 @@ angular.module('starter.services', [])
                                                 break;
                                 }
                         }
+
+                        scores.trauma = (scores.trauma + scores.dsm*16)/40;
                         scores.total = computeTotalScore(scores.anxiety, scores.depression);
                         return scores;
 

@@ -16,28 +16,28 @@ angular.module("PatientQuestionsModule")
                         "color": "button-balanced",
                         "body": "Not at All",
                         "value": "Not at All",
-                        "score": 0,
+                        "score": 1,
                         "selected": false
                 },
                 {
                         "color": "button-calm",
                         "body": "A little",
                         "value": "A little",
-                        "score": 1,
+                        "score": 2,
                         "selected": false
                 },
                 {
                         "color": "button-positive",
                         "body": "Quite a bit",
                         "value": "Quite a bit",
-                        "score": 2,
+                        "score": 3,
                         "selected": false
                 },
                 {
                         "color": "button-assertive",
                         "body": "Extremely",
                         "value": "Extremely",
-                        "score": 3,
+                        "score": 4,
                         "selected": false
                 }];
 
