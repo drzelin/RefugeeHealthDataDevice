@@ -1,0 +1,4 @@
+#Thu Feb 23 16:14:24 EST 2017
+base.0=/Users/daniellezelin/Desktop/SPRING_SENIOR/COMP97/phase1/RefugeeHealthDataDevice/src/refugee-frontend/platforms/android/build/intermediates/transforms/dex/release/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/daniellezelin/Desktop/SPRING_SENIOR/COMP97/phase1/RefugeeHealthDataDevice/src/refugee-frontend/platforms/android/build/intermediates/transforms/dex/release/folders/1000/1f/main/classes.dex

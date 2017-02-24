@@ -1,0 +1,19 @@
+<ion-item class="item-stable">
+        <span class="q-horizontal"> {{ question.body }} </span>
+        <div class="item-input-inset">
+        <button ng-repeat="button in buttons" 
+                class="button button-small select-button"
+                ng-class="{'{{button.color}}': true, 'button-outline': !button.selected}"
+                ng-click="select($index)">
+                <i ng-show="button.hasIcon" class="icon {{ button.body }}"></i>
+                <i ng-show="!button.hasIcon">{{ button.body }}</i>
+        </button>
+        </div>
+</ion-item>
+<div ng-show="shouldShowDropdown()">
+<div ng-repeat="drop in question.dropdown">
+        <hprt-numerical-type ng-if="drop.type == 'numerical'" question="drop"></hprt-numerical-type>
+        <hprt-time-type      ng-if="drop.type == 'time'"      question="drop"></hprt-time-type>
+        <hprt-bool-type      ng-if="drop.type == 'bool'"      question="drop"></hprt-bool-type>
+</div>
+</div>

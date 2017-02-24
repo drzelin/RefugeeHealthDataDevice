@@ -1,0 +1,27 @@
+<ion-view view-title="Doctor Login" name="doctor-login-view">
+        <div class="bar bar-header bar-stable">
+                <h1 class="title">Login</h1>
+        </div>
+        <ion-content class="padding has-header">
+                <div class="list">
+                        <label class="item item-input item-stacked-label">
+                                <span class="input-label">Username</span>
+                                <input type="text" placeholder="abc123">
+                        </label>
+                        <label class="item item-input item-stacked-label">
+                                <span class="input-label">Password</span>
+                                <input type="text" placeholder="PA55W0RD">
+                        </label>
+                        <label class="item item-input item-stacked-label balanced">
+                                Fingerprint
+                        </label>
+                        <label class="item item-input item-stacked-label assertive">
+                                RFID Bracelet
+                        </label>
+                </div>
+                <button ng-click="submit()" class="button button-block button-positive">
+                        Submit
+                </button>
+                <a href="/#/new-doctor">New Doctor?</a>
+        </ion-content>
+</ion-view>

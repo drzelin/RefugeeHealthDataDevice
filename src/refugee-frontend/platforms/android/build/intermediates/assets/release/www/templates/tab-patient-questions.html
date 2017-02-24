@@ -1,0 +1,53 @@
+<ion-side-menus>
+
+    <!-- Center content -->
+    <ion-side-menu-content>
+        <header class="bar bar-header bar-dark">
+            <h1 class="title">{{ categories[selected] }}</h1>
+        </header>
+        <ion-content class="has-header">
+
+            <!-- the form starts here -->
+            <form ng-model="forms[selected]">
+
+                <ion-list>
+                        <div ng-repeat="question in forms[selected].questions">
+                        <hprt-bool-type      question="question" ng-if="forms[selected].type == 'bool'"></hprt-bool-type>
+                        <hprt-scale-type     question="question" ng-if="forms[selected].type == 'scale'"></hprt-scale-type>
+                        <hprt-paragraph-type question="question" ng-if="forms[selected].type == 'paragraph'"></hprt-paragraph-type>
+                        </div>
+                </ion-list>
+
+                <div ng-repeat="form in forms">
+                <hprt-additional-comments value="forms[$index].additional_comments" ng-show="$index == selected"></hprt-additional-comments>
+                </div>
+
+                <button type="submit" 
+                        class="button button-full button-positive"
+                        ng-click="submitForms()">
+                    Submit
+                </button>
+
+            </form>
+            <!-- the form ends here -->
+
+        </ion-content>
+    </ion-side-menu-content>
+
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+        <header class="bar bar-header bar-positive">
+            <h1 class="title">Categories</h1>
+        </header>
+        <ion-content class="has-header">
+            <ion-list>
+                <ion-item menu-close ng-repeat="category in categories"
+                                     ng-init="id = $index"
+                                     ng-click="loadForm(id)">
+                    {{ category }}
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+
+</ion-side-menus>

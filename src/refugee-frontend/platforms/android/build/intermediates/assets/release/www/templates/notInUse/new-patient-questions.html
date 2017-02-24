@@ -1,0 +1,48 @@
+<ion-side-menus>
+        <!-- Center content -->
+        <ion-side-menu-content>
+                <header class="bar bar-header bar-stable">
+                        <h1 class="title">{{ selected }}</h1>
+                </header>
+                <ion-content>
+                        <div class="list has-header">
+                                <div class="item" ng-repeat="question in questions">
+                                        <span class="custom-text">
+                                                {{ question.body }}
+                                        </span>
+                                        <span class="item-input-inset">
+                                                <button id="1" ng-class="{'button-outline':tog!=1}" class="button button-small button-balanced select-button" ng-click="tog=1">
+                                                        <i class="icon ion-checkmark-round"></i>
+                                                </button>
+                                                <button id="2" ng-class="{'button-outline':tog!=2}" class="button button-small button-dark select-button" ng-click="tog=2">
+                                                        <i class="icon ion-minus-round"></i>
+                                                </button>
+
+                                                <button id="3" ng-class="{'button-outline':tog!=3}" class="button button-small button-assertive select-button" ng-click="tog=3">
+                                                        <i class="icon ion-close-round"></i>
+                                                </button>
+                                        </span>
+                                </div>
+                                <button ng-click="submit()" class="button button-full button-positive">
+                                        Submit
+                                </button>
+                        </div>
+                </ion-content>
+        </ion-side-menu-content>
+
+        <!-- Left menu -->
+        <ion-side-menu side="left">
+                <header class="bar bar-header bar-stable">
+                        <h1 class="title">Categories</h1>
+                </header>
+                <ion-content class="has-header">
+                        <ion-list>
+                                <ion-item menu-close ng-repeat="category in categories"
+                                                     ng-click="update(category)">
+                                        {{ category }}
+                                </ion-item>
+                        </ion-list>
+                </ion-content>
+        </ion-side-menu>
+
+</ion-side-menus>

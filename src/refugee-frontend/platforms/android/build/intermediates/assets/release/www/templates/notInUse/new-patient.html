@@ -1,0 +1,26 @@
+<ion-view view-title="New Patient" name="new-patient-view">
+        <div class="bar bar-header bar-stable">
+                <h1 class="title">Create New Patient Account</h1>
+        </div>
+        <ion-content class="padding has-header">
+                <div class="list">
+                        <label class="item item-input item-stacked-label">
+                                <span class="input-label">First Name</span>
+                                <input type="text" placeholder="John">
+                        </label>
+                        <label class="item item-input item-stacked-label">
+                                <span class="input-label">Last Name</span>
+                                <input type="text" placeholder="Doe">
+                        </label>
+                        <label class="item item-input item-stacked-label balanced">
+                                Fingerprint
+                        </label>
+                        <label class="item item-input item-stacked-label balanced">
+                                RFID Bracelet
+                        </label>
+                </div>
+                <button ng-click="submit()" class="button button-block button-positive">
+                        Continue 
+                </button>
+        </ion-content>
+</ion-view>
