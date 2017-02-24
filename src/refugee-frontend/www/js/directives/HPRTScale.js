@@ -6,13 +6,6 @@ angular.module("PatientQuestionsModule")
                 var selected = 0;
                 var buttons = [
                 {
-                        "color": "button-light",
-                        "body": "N/A",
-                        "value": "N/A",
-                        "score": 0,
-                        "selected": false
-                },
-                {
                         "color": "button-balanced",
                         "body": "Not at All",
                         "value": "Not at All",
@@ -38,6 +31,13 @@ angular.module("PatientQuestionsModule")
                         "body": "Extremely",
                         "value": "Extremely",
                         "score": 4,
+                        "selected": false
+                },
+                {
+                        "color": "button-light",
+                        "body": "N/A",
+                        "value": "N/A",
+                        "score": 0,
                         "selected": false
                 }];
 
