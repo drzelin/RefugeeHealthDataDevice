@@ -1,0 +1,23 @@
+<ion-view view-title="Patient Login" name="patient-login-view">
+        <div class="bar bar-header bar-stable">
+                <h1 class="title">Patient Login</h1>
+        </div>
+        <ion-content class="padding has-header">
+                <div class="list">
+                        <label class="item item-input item-stacked-label">
+                                <span class="input-label">Full Name</span>
+                                <input type="text" placeholder="John">
+                        </label>
+                        <label class="item item-input item-stacked-label balanced">
+                                Fingerprint
+                        </label>
+                        <label class="item item-input item-stacked-label assertive">
+                                RFID Bracelet
+                        </label>
+                </div>
+                <button ng-click="submit()" class="button button-block button-positive">
+                        Submit
+                </button>
+                <a href="/#/new-patient">New Patient?</a>
+        </ion-content>
+</ion-view>

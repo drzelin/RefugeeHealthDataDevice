@@ -1,0 +1,190 @@
+<ion-side-menus>
+    <!-- Center content -->
+    <ion-side-menu-content>
+        <header class="bar bar-header bar-dark">
+            <h1 class="title">{{ selected }}</h1>
+        </header>
+        <ion-content class="has-header">
+            <form ng-model="forms">
+            <ion-list>
+                <div ng-repeat="question in questions track by $index" ng-init="question_num = $index">
+                    <ion-item class="item-stable" ng-show="!responseType(question.body)">
+                            <!-- &nbsp; -->
+                            <div ng-show="responseType('scale') == false">
+                                    <span class="q-horizontal"> {{ question.body }} </span>
+                            </div>
+                            <div ng-show="responseType('scale') == true">
+                                    <div class="q-vertical"> {{ question.body }} </div>
+                            </div>
+                            <!-- <div ng-class="{'q-horizontal':responseType(question.body) == true}"> {{ question.body }} </div> -->
+                        <span class="item-input-inset" ng-click="onClick()" ng-show="responseType('scale')" ng-init="question.value=0">
+                            <button id="1"
+                                    ng-class="{'button-outline':question.value!=1}"
+                                    class="button button-small
+                                    button-balanced
+                                    select-button"
+                                    ng-click="question.value=1;questionAnswered(question.value,question.body)">
+                                <i>Not At All</i>
+                            </button>
+                            <button id="2"
+                                    ng-class="{'button-outline':question.value!=2}"
+                                    class="button button-small
+                                    button-calm select-button"
+                                    ng-click="question.value=2;questionAnswered(question.value,question.body)">
+                                <i>A little</i>
+                            </button>
+                            <button id="3"
+                                    ng-class="{'button-outline':question.value!=3}"
+                                    class="button button-small
+                                    button-positive
+                                    select-button"
+                                    ng-click="question.value=3;questionAnswered(question.value,question.body)">
+                                <i>Quite a bit</i>
+                            </button>
+                            <button id="4"
+                                    ng-class="{'button-outline':question.value!=4}"
+                                    class="button button-small
+                                    button-assertive
+                                    select-button"
+                                    ng-click="question.value=4;questionAnswered(question.value,question.body)">
+                                <i>Extremely</i>
+                            </button>
+                            <button id="0"
+                                    ng-class="{'button-outline':question.value!=0}"
+                                    class="button button-small
+                                    button-dark
+                                    select-button"
+                                    ng-click="question.value=0;questionAnswered(question.value,question.body)">
+                                <i>N/A</i>
+                            </button>
+                        </span>
+                        <span class="item-input-inset" ng-show="responseType('bool')" ng-init="question.value=0">
+                            <button id="5"
+                                    ng-class="{'button-outline':question.value!=5}"
+                                    class="button button-small
+                                    button-balanced
+                                    select-button"
+                                    ng-click="question.value=5;questionAnswered(question.value,question.body)">
+                                <i class="icon ion-checkmark-round"></i>
+                            </button>
+                            <button id="6"
+                                    ng-class="{'button-outline':question.value!=6}"
+                                    class="button button-small
+                                    button-dark select-button"
+                                    ng-click="question.value=6;questionAnswered(question.value,question.body)">
+                                <i class="icon ion-minus-round"></i>
+                            </button>
+                            <button id="7"
+                                    ng-class="{'button-outline':question.value!=7}"
+                                    class="button button-small
+                                    button-assertive
+                                    select-button"
+                                    ng-click="question.value=7;questionAnswered(question.value,question.body)">
+                                <i class="icon ion-close-round"></i>
+                            </button>
+                            <button id="0"
+                                    ng-class="{'button-outline':question.value!=0}"
+                                    class="button button-small
+                                    button-dark
+                                    select-button"
+                                    ng-click="question.value=0;questionAnswered(question.value,question.body)">
+                                <i>N/A</i>
+                            </button>
+                        </span>
+                        <span class="item-input-inset" ng-show="responseType('paragraph')">
+                            <label class="item item-input item-floating-label">
+                                <span class="input-label">Response</span>
+                                <input type="text" placeholder="Response" name="input" ng-model ="forms[selected].paragraphText[question_num]"\>
+                            </label>
+                        </span>
+                        &nbsp;
+                    </ion-item>
+                    <ion-item class="item-accordion"
+                              ng-repeat="dropdown in question.dropdown track by $index"
+                              ng-init="dropdown_num = $index"
+                              ng-show="showDropdown(question.value)">
+                        {{ dropdown.body }}
+                        <span class="item-input-inset" ng-show="'bool' == dropdown.question_type" ng-init="dropdown.value='unanswered'">
+                            <button id="8"
+                                    ng-class="{'button-outline':dropdown.value!='Yes'}"
+                                    class="button button-small
+                                    button-balanced
+                                    select-button"
+                                    ng-click="dropdown.value='Yes';questionAnswered(dropdown.value, question.body, dropdown.body)">
+                                <i class="icon ion-checkmark-round"></i>
+                            </button>
+                            <button id="9"
+                                    ng-class="{'button-outline':dropdown.value!='Neutral'}"
+                                    class="button button-small
+                                    button-dark select-button"
+                                    ng-click="dropdown.value='Neutral';questionAnswered(dropdown.value, question.body, dropdown.body)">
+                                <i class="icon ion-minus-round"></i>
+                            </button>
+                            <button id="10"
+                                    ng-class="{'button-outline':dropdown.value!='No'}"
+                                    class="button button-small
+                                    button-assertive
+                                    select-button"
+                                    ng-click="dropdown.value='No';questionAnswered(dropdown.value, question.body, dropdown.body)">
+                                <i class="icon ion-close-round"></i>
+                            </button>
+                            <button id="0"
+                                    ng-class="{'button-outline':dropdown.value!='unanswered'}"
+                                    class="button button-small
+                                    button-dark
+                                    select-button"
+                                    ng-click="dropdown.value='unanswered';questionAnswered(question.value,question.body)">
+                                <i>N/A</i>
+                            </button>
+                        </span>
+                        <span class="item-input-inset" ng-show="'time' == dropdown.question_type">
+                            <label class="item item-input">
+                                <span class="input-label">Hours</span>
+                                <input type="number" name="input" ng-model="forms[selected].question[question_num].dropdown[dropdown_num].hours"\>
+                            </label>
+                            <label class="item item-input">
+                                <span class="input-label">Minutes</span>
+                                <input type="number" name="input" ng-model="forms[selected].question[question_num].dropdown[dropdown_num].minutes"\s>
+                            </label>
+                        </span>
+                        <span class="item-input-inset" ng-show="'num' == dropdown.question_type">
+                            <label class="item item-input">
+                                <span class="input-label">Number</span>
+                                <input type="number" name="input" ng-model ="forms[selected].question[question_num].dropdown[dropdown_num].number">
+                            </label>
+                        </span>
+                    </ion-item>
+                </div>
+            </ion-list>
+            <ion-item>
+                <span>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Additional Comments</span>
+                        <input type="text" placeholder="Additional Comments" ng-model="forms[selected].additional_comments">
+                    </label>
+                </span>
+            </ion-item>
+            <button type="submit" class="button button-full button-positive" ng-click="submit(forms)">
+                Submit
+            </button>
+            </div>
+            </form>
+        </ion-content>
+    </ion-side-menu-content>
+
+    <!-- Left menu -->
+    <ion-side-menu side="left">
+        <header class="bar bar-header bar-positive">
+            <h1 class="title">Categories</h1>
+        </header>
+        <ion-content class="has-header">
+            <ion-list>
+                <ion-item menu-close ng-repeat="category in categories"
+                                     ng-click="update(category)">
+                    {{ category }}
+                </ion-item>
+            </ion-list>
+        </ion-content>
+    </ion-side-menu>
+
+</ion-side-menus>

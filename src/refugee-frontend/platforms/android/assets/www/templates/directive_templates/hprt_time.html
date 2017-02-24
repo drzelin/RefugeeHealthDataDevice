@@ -1,0 +1,21 @@
+<ion-item class="item-stable">
+        <div class="q-vertical"> {{ question.body }} </div>
+        <div class="row">
+                <div class="col">
+                        <label class="item item-input">
+                                <input type="number"
+                                       placeholder="# of Hours"
+                                       ng-model="hours"
+                                       ng-keyup="updateHours(hours)">
+                        </label>
+                </div>
+                <div class="col">
+                        <label class="item item-input">
+                                <input type="number"
+                                       placeholder="# of Minutes"
+                                       ng-model="minutes"
+                                       ng-keyup="updateMinutes(minutes)">
+                        </label>
+                </div>
+        </div>
+</ion-item>
