@@ -6,13 +6,15 @@
        We met with Dean Panetta to clarify what happened at the meeting a couple months
        ago. She clarified what the goals of our iteration of the project are, and we
        have a much better sense of what's expected of us for this semester.
-       
+</p>
+<p>
        Our version of the app will not actually be used at camps; rather, it will be
        used for training and beta testing. Because of this, we do not need to adhere
        to HIPAA laws since no real healthcare data would be sent through our app.
        This iteration of the project will be focused on proof-of-concept,
        usability testing, and clarifying what needs to be included in the app.
-       
+</p>
+<p>
        Going forward, we will meet regularly to build upon what we've done so far
        to make sure we have met all of our goals by the end of the semester.
 </p>
